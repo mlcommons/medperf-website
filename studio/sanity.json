@@ -39,6 +39,14 @@
     {
       "implements": "part:@sanity/dashboard/config",
       "path": "./dashboardConfig.js"
+    },
+    {
+      "name": "part:@sanity/base/new-document-structure",
+      "path": "./config/newDocumentStructure.js"
+    },
+    {
+      "implements": "part:@sanity/base/document-actions/resolver",
+      "path": "./config/resolveDocumentActions.js"
     }
   ]
 }
