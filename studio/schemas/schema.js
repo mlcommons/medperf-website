@@ -5,8 +5,10 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // We import object and document schemas
+import homepage from './documents/homepage';
 import settings from './documents/settings';
 
+import role from './objects/role';
 import blockContent from './objects/blockContent';
 import asset from './objects/asset';
 import seo from './objects/seo';
@@ -18,8 +20,10 @@ export default createSchema({
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
+    homepage,
     settings,
 
+    role,
     blockContent,
     asset,
     seo,

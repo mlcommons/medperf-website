@@ -8,6 +8,8 @@ export default {
       title: 'Title',
       type: 'string',
       description: 'Internal admin name for Settings page',
+      initialValue: 'Site Settings',
+      readOnly: true,
     },
     {
       name: 'name',
