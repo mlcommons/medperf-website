@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply font-sans;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.4;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+  @apply font-serif;
+}
+
+h1, .h1 {
+  font-size: 3rem;
+}
+
+h2, .h2 {
+  font-size: 2rem;
+}
+
+h3, .h3 {
+  font-size: 1.5rem;
+}
+
+h4, .h4 {
+  font-size: 1.25rem;
+}
+
+.richTextFormatting p {
+  @apply mb-4;
+}

@@ -1,0 +1,16 @@
+# sanity build output
+studio/dist/
+
+# next.js build output
+.next
+
+# vercel config
+.vercel
+
+# dotenv environment variables files
+.env
+.env.local
+.env.development
+
+# Dependency directories
+node_modules/

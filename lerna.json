@@ -1,0 +1,9 @@
+{
+  "packages": [
+    "studio",
+    "web"
+  ],
+  "useNx": true,
+  "version": "1.0.0",
+  "npmClient": "yarn"
+}

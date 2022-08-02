@@ -1,0 +1,13 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "dev": "lerna run dev --parallel",
+    "build": "lerna bootstrap && lerna run build --parallel"
+  },
+  "devDependencies": {
+    "lerna": "^5.1.8",
+    "nx": "^14.4.2"
+  },
+  "dependencies": {}
+}
