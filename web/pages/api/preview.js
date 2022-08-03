@@ -16,7 +16,7 @@ export default async function preview(req, res) {
   const isDraft = document.startsWith('drafts.');
   const id = isDraft ? document.slice(7) : document;
 
-  if (id === 'settings') {
+  if (id === 'homepage') {
     const indexData = await previewClient.fetch(indexQuery);
 
     if (!indexData) {

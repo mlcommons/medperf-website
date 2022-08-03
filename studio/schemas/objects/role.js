@@ -17,7 +17,7 @@ export default{
       name: 'sectionId',
       title: 'Section ID',
       type: 'string',
-      description: 'This should be formatted as a string with no spaces to match a section ID below, e.g. `benchmark-committee`. This will help jump users down the page',
+      description: 'This should be formatted as a string with no spaces to match a section ID below, e.g. `benchmark-committee`. This will help jump users down the page, and also determine which illustration to show.',
     }
   ],
   preview: {

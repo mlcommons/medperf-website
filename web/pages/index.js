@@ -19,21 +19,38 @@ const Index = ({ indexData, preview }) => {
   }
 
   const {
-    name,
-    seoDescription,
-    seoImage,
+    headline,
+    hero,
+    siteSettings,
   } = data;
 
   return (
     <Layout
       preview={preview}
       slug=""
-      description={seoDescription}
-      image={seoImage}
+      description={siteSettings.seoDescription}
+      image={siteSettings.seoImage}
     >
       <div className="w-full h-screen flex flex-col items-center justify-center">
-        <h2>Homepage</h2>
-        <h2>{name}</h2>
+        <h2>{siteSettings.name}</h2>
+        <h4>{headline}</h4>
+        {hero && (
+          <div>
+            <h3>{hero.title}</h3>
+            <p>{hero.description}</p>
+            <br />
+            <br />
+            <ul className="grid grid-cols-2 gap-x-4">
+              {hero.roles.length > 0 && hero.roles.map((role, i) => (
+                <li key={role.sectionId}>
+                  <h3>{i + 1}. {role.name}</h3>
+                  <p>{role.description}</p>
+                  <small>{role.sectionId}</small>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </Layout>
   );
