@@ -46,5 +46,11 @@ export default {
       type: 'array',
       of: [{ type: 'section' }],
     },
+    {
+      name: 'pageTitle',
+      title: 'Page Title',
+      type: 'string',
+      description: 'This is important for SEO. All page titles will append the name of the site from Site Settings',
+    }
   ],
 };

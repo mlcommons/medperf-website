@@ -2,16 +2,17 @@ import Head from 'next/head';
 
 import { urlForImage } from '../sanity/helpers';
 
-const siteTitle = process.env.NEXT_PUBLIC_PROJECT_NAME || '';
-
 const Layout = ({
   preview,
   slug,
   title = '',
   description = '',
   image,
+  siteName,
   children,
 }) => {
+  const siteTitle = siteName || process.env.NEXT_PUBLIC_PROJECT_NAME || '';
+
   const fullTitle = `${title}${title && ' | '}${siteTitle}`;
 
   return (

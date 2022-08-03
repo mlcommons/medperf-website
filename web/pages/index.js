@@ -22,6 +22,7 @@ const Index = ({ indexData, preview }) => {
     headline,
     hero,
     sections,
+    pageTitle,
     siteSettings,
   } = data;
 
@@ -31,6 +32,8 @@ const Index = ({ indexData, preview }) => {
       slug=""
       description={siteSettings.seoDescription}
       image={siteSettings.seoImage}
+      title={pageTitle}
+      siteName={siteSettings.name}
     >
       <div className="w-full h-screen flex flex-col items-center justify-center">
         <h2>{siteSettings.name}</h2>
