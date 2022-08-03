@@ -1,4 +1,4 @@
-export default{
+export default {
   name: 'resultsMap',
   title: 'Results Map',
   type: 'object',
@@ -13,5 +13,5 @@ export default{
       title: 'Description',
       type: 'text',
     },
-  ]
-}
+  ],
+};

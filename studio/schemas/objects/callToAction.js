@@ -17,8 +17,8 @@ export default {
       name: 'link',
       title: 'Button Link',
       type: 'url',
-      validation: Rule => Rule.uri({
-        scheme: ['http', 'https', 'mailto', 'tel']
+      validation: (Rule) => Rule.uri({
+        scheme: ['http', 'https', 'mailto', 'tel'],
       }).required(),
     },
   ],
@@ -28,11 +28,11 @@ export default {
       buttonText: 'buttonText',
       link: 'link',
     },
-    prepare({ text, buttonText, link }) {
+    prepare({text, buttonText, link}) {
       return {
         title: text,
-        subtitle: `${buttonText} - ${link ? link : 'Missing link'}`
-      }
-    }
-  }
-}
+        subtitle: `${buttonText} - ${link ? link : 'Missing link'}`,
+      };
+    },
+  },
+};

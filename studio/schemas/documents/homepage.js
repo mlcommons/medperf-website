@@ -15,7 +15,7 @@ export default {
       name: 'headline',
       title: 'Headline',
       type: 'string',
-      description: 'Site tagline'
+      description: 'Site tagline',
     },
     {
       name: 'hero',
@@ -36,21 +36,21 @@ export default {
           name: 'roles',
           title: 'Roles',
           type: 'array',
-          of: [{ type: 'role' }],
-        }
-      ]
+          of: [{type: 'role'}],
+        },
+      ],
     },
     {
       name: 'sections',
       title: 'Sections',
       type: 'array',
-      of: [{ type: 'section' }],
+      of: [{type: 'section'}],
     },
     {
       name: 'pageTitle',
       title: 'Page Title',
       type: 'string',
       description: 'This is important for SEO. All page titles will append the name of the site from Site Settings',
-    }
+    },
   ],
 };
