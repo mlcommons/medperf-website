@@ -39,6 +39,12 @@ export default {
           of: [{ type: 'role' }],
         }
       ]
-    }
+    },
+    {
+      name: 'sections',
+      title: 'Sections',
+      type: 'array',
+      of: [{ type: 'section' }],
+    },
   ],
 };

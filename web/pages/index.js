@@ -21,6 +21,7 @@ const Index = ({ indexData, preview }) => {
   const {
     headline,
     hero,
+    sections,
     siteSettings,
   } = data;
 
@@ -40,7 +41,7 @@ const Index = ({ indexData, preview }) => {
             <p>{hero.description}</p>
             <br />
             <br />
-            <ul className="grid grid-cols-2 gap-x-4">
+            <ul className="grid grid-cols-4 gap-x-4">
               {hero.roles.length > 0 && hero.roles.map((role, i) => (
                 <li key={role.sectionId}>
                   <h3>{i + 1}. {role.name}</h3>
@@ -51,6 +52,12 @@ const Index = ({ indexData, preview }) => {
             </ul>
           </div>
         )}
+        {sections.length > 0 && sections.map((section) => (
+          <section key={section.id} id={section.id}>
+            <small>{section.label}</small>
+            <h3>{section.title}</h3>
+          </section>
+        ))}
       </div>
     </Layout>
   );

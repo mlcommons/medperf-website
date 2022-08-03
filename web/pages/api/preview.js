@@ -6,7 +6,7 @@ export default async function preview(req, res) {
     req.query.secret !== process.env.SANITY_PREVIEW_SECRET
     || !req.query.document
   ) {
-    return res.status(401).json({ message: 'Invalid token' });
+    return res.status(401).json({ message: 'Invalid token or missing document' });
   }
 
   console.log('Request query info', req.query.document);

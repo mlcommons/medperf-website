@@ -9,6 +9,11 @@ import homepage from './documents/homepage';
 import settings from './documents/settings';
 
 import role from './objects/role';
+import section from './objects/section';
+import calloutBox from './objects/calloutBox';
+import callToAction from './objects/callToAction';
+import resultsMap from './objects/resultsMap';
+
 import blockContent from './objects/blockContent';
 import asset from './objects/asset';
 import seo from './objects/seo';
@@ -24,6 +29,10 @@ export default createSchema({
     settings,
 
     role,
+    section,
+    calloutBox,
+    callToAction,
+    resultsMap,
     blockContent,
     asset,
     seo,
