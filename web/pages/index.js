@@ -1,3 +1,6 @@
+import BlockContent from '@sanity/block-content-to-react';
+import Link from 'next/link';
+
 import { getClient } from '../sanity/server';
 import indexQuery from '../sanity/queries';
 import { usePreviewSubscription } from '../sanity/helpers';
@@ -35,9 +38,9 @@ const Index = ({ indexData, preview }) => {
       title={pageTitle}
       siteName={siteSettings.name}
     >
-      <div className="w-full h-screen flex flex-col items-center justify-center">
-        <h2>{siteSettings.name}</h2>
-        <h4>{headline}</h4>
+      <div className="w-full flex flex-col items-center justify-center">
+        <h1 className="h1">{siteSettings.name}</h1>
+        <h2 className="h2">{headline}</h2>
         {hero && (
           <div>
             <h3>{hero.title}</h3>
@@ -47,9 +50,12 @@ const Index = ({ indexData, preview }) => {
             <ul className="grid grid-cols-4 gap-x-4">
               {hero.roles.length > 0 && hero.roles.map((role, i) => (
                 <li key={role.sectionId}>
-                  <h3>{i + 1}. {role.name}</h3>
+                  <p className="mb-4">{i + 1}. {role.name}</p>
                   <p>{role.description}</p>
                   <small>{role.sectionId}</small>
+                  <Link href={`#${role.sectionId}`} scroll={false}>
+                    <button type="button" className="underline">Read more</button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -58,7 +64,11 @@ const Index = ({ indexData, preview }) => {
         {sections.length > 0 && sections.map((section) => (
           <section key={section.id} id={section.id}>
             <small>{section.label}</small>
-            <h3>{section.title}</h3>
+            <h3 className="h2">{section.title}</h3>
+            <BlockContent
+              blocks={section.text}
+              className="richTextFormatting"
+            />
           </section>
         ))}
       </div>
