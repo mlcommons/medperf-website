@@ -1,5 +1,6 @@
 import BlockContent from '@sanity/block-content-to-react';
 import Link from 'next/link';
+import classNames from 'classnames';
 
 import { getClient } from '../sanity/server';
 import indexQuery from '../sanity/queries';
@@ -39,38 +40,62 @@ const Index = ({ indexData, preview }) => {
       siteName={siteSettings.name}
     >
       <div className="w-full flex flex-col items-center justify-center">
-        <h1 className="h1">{siteSettings.name}</h1>
-        <h2 className="h2">{headline}</h2>
-        {hero && (
-          <div>
-            <h3>{hero.title}</h3>
-            <p>{hero.description}</p>
-            <br />
-            <br />
-            <ul className="grid grid-cols-4 gap-x-4">
-              {hero.roles.length > 0 && hero.roles.map((role, i) => (
-                <li key={role.sectionId}>
-                  <p className="mb-4">{i + 1}. {role.name}</p>
-                  <p>{role.description}</p>
-                  <small>{role.sectionId}</small>
-                  <Link href={`#${role.sectionId}`} scroll={false}>
-                    <button type="button" className="underline">Read more</button>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+        <div className="w-full p-4 md:p-12 bg-primary">
+          <div className="max-w-screen-lg mx-4 md:mx-auto">
+            <h1 className="h1">{siteSettings.name}</h1>
+            <h2 className="h2">{headline}</h2>
           </div>
-        )}
-        {sections.length > 0 && sections.map((section) => (
-          <section key={section.id} id={section.id}>
-            <small>{section.label}</small>
-            <h3 className="h2">{section.title}</h3>
-            <BlockContent
-              blocks={section.text}
-              className="richTextFormatting"
-            />
-          </section>
-        ))}
+          {hero && (
+            <div className="max-w-screen-lg md:mx-auto border-white border-3">
+              <h3 className="p-4 border-b-3 border-white font-mono text-sm">{hero.title}</h3>
+              <div className="p-4">
+                <p>{hero.description}</p>
+                <br />
+                <br />
+                <ul className="grid grid-cols-4 gap-x-4">
+                  {hero.roles.length > 0 && hero.roles.map((role, i) => (
+                    <li key={role.sectionId}>
+                      <p className="mb-4">{i + 1}. {role.name}</p>
+                      <p className="mb-4">{role.description}</p>
+                      <Link href={`#${role.sectionId}`} scroll={false}>
+                        <button type="button" className="underline">Read more</button>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="p-4 md:p-12">
+          <div className="max-w-screen-lg md:mx-auto">
+            {sections.length > 0 && sections.map((section, i) => (
+              <section
+                key={section.id}
+                id={section.id}
+                className="md:grid md:grid-cols-5 md:gap-x-4"
+              >
+                <div className="hidden md:block md:col-start-1 pt-14 text-dark-gray">
+                  Illustration on desktop
+                </div>
+                <div className={classNames({
+                  'md:col-span-3 md:col-start-2 pt-6 pb-12 md:pt-8 md:pb-16 -mt-1': true,
+                  'border-t border-black': i !== 0,
+                })}
+                >
+                  <div className="mb-1">
+                    <small>{section.label}</small>
+                  </div>
+                  <h3 className="h2">{section.title}</h3>
+                  <BlockContent
+                    blocks={section.text}
+                    className="richTextFormatting"
+                  />
+                </div>
+              </section>
+            ))}
+          </div>
+        </div>
       </div>
     </Layout>
   );
