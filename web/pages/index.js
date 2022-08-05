@@ -1,5 +1,4 @@
 import BlockContent from '@sanity/block-content-to-react';
-import Link from 'next/link';
 import classNames from 'classnames';
 
 import { getClient } from '../sanity/server';
@@ -7,6 +6,7 @@ import indexQuery from '../sanity/queries';
 import { usePreviewSubscription } from '../sanity/helpers';
 
 import Layout from '../components/Layout';
+import Hero from '../components/Hero';
 
 const Index = ({ indexData, preview }) => {
   const { data } = usePreviewSubscription(indexQuery, {
@@ -45,27 +45,7 @@ const Index = ({ indexData, preview }) => {
             <h1 className="h1">{siteSettings.name}</h1>
             <h2 className="h2">{headline}</h2>
           </div>
-          {hero && (
-            <div className="max-w-screen-lg md:mx-auto border-white border-3">
-              <h3 className="p-4 border-b-3 border-white font-mono text-sm">{hero.title}</h3>
-              <div className="p-4">
-                <p>{hero.description}</p>
-                <br />
-                <br />
-                <ul className="grid grid-cols-4 gap-x-4">
-                  {hero.roles.length > 0 && hero.roles.map((role, i) => (
-                    <li key={role.sectionId}>
-                      <p className="mb-4">{i + 1}. {role.name}</p>
-                      <p className="mb-4">{role.description}</p>
-                      <Link href={`#${role.sectionId}`} scroll={false}>
-                        <button type="button" className="underline">Read more</button>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          )}
+          {hero && <Hero hero={hero} />}
         </div>
         <div className="p-4 md:p-12">
           <div className="max-w-screen-lg md:mx-auto">
