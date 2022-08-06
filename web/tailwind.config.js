@@ -36,6 +36,12 @@ module.exports = {
       borderWidth: {
         3: '3px',
       },
+      gridTemplateRows: {
+        roles: '10rem 4rem 1fr 2rem',
+      },
+      scale: {
+        80: '0.8',
+      },
     },
   },
   plugins: [],

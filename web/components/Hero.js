@@ -65,8 +65,8 @@ const Hero = ({ hero }) => {
   return (
     <div className="max-w-screen-lg md:mx-auto border-white border-3 overflow-hidden">
       <h3 className="p-4 border-b-3 border-white font-mono text-sm">{title}</h3>
-      <div className="p-4">
-        <div className="md:grid md:grid-cols-2 md:gap-x-12">
+      <div className="p-4 md:p-8">
+        <div className="md:grid md:grid-cols-2 md:gap-x-12 md:items-center">
           <div>
             <p>{description}</p>
             <button type="button" onClick={() => playAnimation()} className="my-4">Play</button>
@@ -84,12 +84,12 @@ const Hero = ({ hero }) => {
               <li
                 key={sectionId}
                 className={classNames({
-                  'px-4 md:px-0 transition-opacity': true,
+                  'px-4 md:px-0 transition-opacity grid grid-rows-roles': true,
                   'opacity-30': activeIndex !== i + 1 && activeIndex !== 0,
                 })}
               >
                 <div className={classNames({
-                  'mb-8 h-36 flex items-center justify-center transition-colors': true,
+                  'scale-80 md:scale-100 mb-4 md:mb-8 h-36 flex items-center justify-center transition-colors': true,
                   'text-black': activeIndex !== i + 1,
                   'text-blue': activeIndex === i + 1,
                 })}
@@ -107,10 +107,10 @@ const Hero = ({ hero }) => {
                     <ResultsIllustration />
                   )}
                 </div>
-                <p className="mb-4">{i + 1}. {name}</p>
+                <p className="mb-4 self-center">{i + 1}. {name}</p>
                 <p className="mb-4">{roleDescription}</p>
                 <Link href={`#${sectionId}`} scroll={false} passHref>
-                  <button type="button" className="underline">Read more</button>
+                  <button type="button" className="justify-self-start underline">Read more</button>
                 </Link>
               </li>
             ))}
