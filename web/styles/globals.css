@@ -24,7 +24,9 @@ html {
   @apply text-2xl md:text-3xl mb-4;
 }
 
-.h2, .h3, .h4 {
+.h2,
+.h3,
+.h4 {
   @apply text-lg md:text-2xl mb-4;
 }
 
@@ -43,4 +45,25 @@ small {
 
 .richTextFormatting li {
   @apply mb-4;
+}
+
+@media screen and (max-width: 767px) {
+  .rolesAnimation {
+    @apply transition-transform duration-300;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    width: 200%;
+  }
+
+  .rolesAnimation--2 {
+    transform: translateX(-12.5%);
+  }
+
+  .rolesAnimation--3 {
+    transform: translateX(-37.5%);
+  }
+
+  .rolesAnimation--4 {
+    transform: translateX(-62.5%);
+  }
 }
