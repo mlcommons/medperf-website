@@ -5,11 +5,8 @@ import classNames from 'classnames';
 
 import mapAnimation from '../public/animations/mapAnimation.json';
 
-import BenchmarkIllustration from './illustrations/BenchmarkIllustration';
-import CliniciansIllustration from './illustrations/CliniciansIllustration';
-import ResearchersIllustration from './illustrations/ResearchersIllustration';
-import ResultsIllustration from './illustrations/ResultsIllustration';
 import Arrow from './illustrations/Arrow';
+import SectionIllustrations from './SectionIllustrations';
 
 const Hero = ({ hero }) => {
   const { title, description, roles } = hero;
@@ -111,18 +108,7 @@ const Hero = ({ hero }) => {
                     'text-blue': activeIndex === i + 1,
                   })}
                   >
-                    {sectionId === 'benchmark-committee' && (
-                      <BenchmarkIllustration />
-                    )}
-                    {sectionId === 'researchers' && (
-                      <ResearchersIllustration />
-                    )}
-                    {sectionId === 'clinicians' && (
-                      <CliniciansIllustration />
-                    )}
-                    {sectionId === 'results' && (
-                      <ResultsIllustration />
-                    )}
+                    <SectionIllustrations id={sectionId} />
                   </div>
                   <p className="mb-4 self-center">
                     {i + 1}. {name}

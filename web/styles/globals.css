@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Color variables */
+:root {
+  --primary-color: #CCEBD4;
+}
+
 /* Base */
 html {
   @apply font-sans;

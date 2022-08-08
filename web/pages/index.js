@@ -7,6 +7,7 @@ import { usePreviewSubscription } from '../sanity/helpers';
 
 import Layout from '../components/Layout';
 import Hero from '../components/Hero';
+import SectionIllustrations from '../components/SectionIllustrations';
 
 const Index = ({ indexData, preview }) => {
   const { data } = usePreviewSubscription(indexQuery, {
@@ -55,8 +56,8 @@ const Index = ({ indexData, preview }) => {
                 id={section.id}
                 className="md:grid md:grid-cols-5 md:gap-x-4"
               >
-                <div className="hidden md:block md:col-start-1 pt-14 text-dark-gray">
-                  Illustration on desktop
+                <div className="hidden md:block md:col-start-1 pt-14">
+                  <SectionIllustrations id={section.id} reverseColors />
                 </div>
                 <div className={classNames({
                   'md:col-span-3 md:col-start-2 pt-6 pb-12 md:pt-8 md:pb-16 -mt-1': true,
