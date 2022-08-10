@@ -98,7 +98,7 @@ const Index = ({ indexData, preview }) => {
           </div>
         </div>
         <div className="w-full p-4 md:p-12 bg-light-gray">
-          <div className="max-w-screen-lg md:mx-auto flex justify-between">
+          <div className="max-w-screen-lg md:mx-auto flex justify-between items-end">
             <div>
               <div className="w-20">
                 <Image src={medPerfLogoGreen} alt={`${siteSettings.name} Logo`} />
@@ -110,6 +110,8 @@ const Index = ({ indexData, preview }) => {
 
             <div className="text-sm">
               &copy; 2020 - 2022 MLCommons
+              <br />
+              <a href="privacy" className="underline">Privacy Policy</a>
             </div>
           </div>
         </div>
