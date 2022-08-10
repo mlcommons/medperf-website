@@ -30,7 +30,7 @@ export default {
     },
     prepare({text, buttonText, link}) {
       return {
-        title: text,
+        title: text || '(No text)',
         subtitle: `${buttonText} - ${link ? link : 'Missing link'}`,
       };
     },
