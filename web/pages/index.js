@@ -7,11 +7,12 @@ import { usePreviewSubscription } from '../sanity/helpers';
 
 import Layout from '../components/Layout';
 import Hero from '../components/Hero';
+import Section from '../components/Section';
 
 import githubLogo from '../public/images/github_logo.svg';
 import medPerfLogo from '../public/images/medperf_logo.svg';
 import medPerfLogoGreen from '../public/images/medperf_logo_green.svg';
-import Section from '../components/Section';
+import mlCommonsLogo from '../public/images/mlc_lockup_black.svg';
 
 const Index = ({ indexData, preview }) => {
   const { data } = usePreviewSubscription(indexQuery, {
@@ -65,6 +66,14 @@ const Index = ({ indexData, preview }) => {
             </div>
           </div>
           {hero && <Hero hero={hero} />}
+          <div className="flex space-x-2 items-center justify-center pt-8 pb-4">
+            <span className="text-sm">
+              Powered by
+            </span>
+            <a href="https://mlcommons.org">
+              <Image src={mlCommonsLogo} alt="Go to MLCommons" />
+            </a>
+          </div>
         </div>
         <div className="p-4 md:p-12">
           <div className="max-w-screen-lg md:mx-auto">
