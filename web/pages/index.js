@@ -8,6 +8,7 @@ import { usePreviewSubscription } from '../sanity/helpers';
 import Layout from '../components/Layout';
 import Hero from '../components/Hero';
 import Section from '../components/Section';
+import ArrowUp from '../components/illustrations/ArrowUp';
 
 import githubLogo from '../public/images/github_logo.svg';
 import medPerfLogo from '../public/images/medperf_logo.svg';
@@ -65,7 +66,9 @@ const Index = ({ indexData, preview }) => {
               <h2 className="h2 text-center">{headline}</h2>
             </div>
           </div>
-          {hero && <Hero hero={hero} />}
+          <div id="top">
+            {hero && <Hero hero={hero} />}
+          </div>
           <div className="flex space-x-2 items-center justify-center pt-8 pb-4">
             <span className="text-sm">
               Powered by
@@ -75,7 +78,16 @@ const Index = ({ indexData, preview }) => {
             </a>
           </div>
         </div>
-        <div className="p-4 md:p-12">
+        <div className="p-4 md:p-12 relative w-full">
+          <Link href="#top" scroll={false} passHref>
+            <button
+              type="button"
+              className="hidden md:flex sticky top-8 left-full -mt-4 -mr-4 items-center space-x-2 text-sm text-dark-gray"
+            >
+              <ArrowUp />
+              <div>Back to top</div>
+            </button>
+          </Link>
           <div className="max-w-screen-lg md:mx-auto">
             {sections.length > 0 && sections.map((section, i) => (
               <Section section={section} i={i} key={section.id} />
