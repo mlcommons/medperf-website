@@ -10,7 +10,7 @@ module.exports = {
   ],
   rules: {
     'comma-dangle': ['error', 'always-multiline'],
-    'max-len': ['error', {ignoreStrings: true, ignoreComments: true}],
+    'max-len': ['error', {ignoreStrings: true, ignoreComments: true, ignoreRegExpLiterals: true}],
     semi: ['error', 'always'],
   },
 };

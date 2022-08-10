@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import Link from 'next/link';
 import Image from 'next/image';
 import BlockContent from '@sanity/block-content-to-react';
@@ -51,16 +50,19 @@ const Index = ({ indexData, preview }) => {
         <div className="w-full p-4 bg-primary">
           <div className="w-full flex items-center justify-end space-x-4 text-sm">
             <Link href="/documentation">
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a>Documentation</a>
             </Link>
-            <a href="mailto:info@medperf.org">Contact</a>
-            <a href="githubRepo">
-              <Image src={githubLogo} alt="MedPerf Github Repo Link" />
-            </a>
+            <a href={`mailto:${siteSettings.email || 'info@medperf.org'}`}>Contact</a>
+            {siteSettings.github && (
+              <a href={siteSettings.github} className="w-4 h-4">
+                <Image src={githubLogo} alt={`Go to ${siteSettings.name} Github Repo`} />
+              </a>
+            )}
           </div>
           <div className="md:p-8">
             <div className="max-w-screen-lg mx-4 md:mx-auto py-8 md:py-8 flex flex-col space-y-4 md:space-y-8 justify-center">
-              <Image src={medPerfLogo} alt={siteSettings.name} />
+              <Image src={medPerfLogo} alt={`${siteSettings.name} Logo`} />
               <h2 className="h2 text-center">{headline}</h2>
             </div>
           </div>
@@ -99,7 +101,7 @@ const Index = ({ indexData, preview }) => {
           <div className="max-w-screen-lg md:mx-auto flex justify-between">
             <div>
               <div className="w-20">
-                <Image src={medPerfLogoGreen} alt={siteSettings.name} />
+                <Image src={medPerfLogoGreen} alt={`${siteSettings.name} Logo`} />
               </div>
               <p className="text-sm text-dark-gray">
                 Powered by <a href="https://mlcommons.org" className="underline">ML Commons</a>

@@ -3,6 +3,8 @@ const metadataQuery = `
   "seoImage": seo.openGraphImage,
   "siteSettings": *[_type == "settings"][0]{
     name,
+    email,
+    github,
     "seoDescription": seo.description,
     "seoImage": seo.openGraphImage,
   }
