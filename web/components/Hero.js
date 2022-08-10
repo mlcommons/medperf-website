@@ -77,7 +77,16 @@ const Hero = ({ hero }) => {
         <div className="md:grid md:grid-cols-2 md:gap-x-12 md:items-center">
           <div>
             <p>{description}</p>
-            <button type="button" onClick={() => playAnimation()} className="my-4">Play</button>
+            <button
+              type="button"
+              onClick={() => playAnimation()}
+              className="my-6 md:my-4 font-mono text-dark-gray flex space-x-2 items-center mx-auto md:mx-0 hover:text-black"
+            >
+              <svg width="15" height="17" viewBox="0 0 15 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 8.49995L0.75 16.7272L0.750001 0.272705L15 8.49995Z" fill="currentColor" />
+              </svg>
+              <span>Play</span>
+            </button>
             {/*
             <br />
             <button type="button" onClick={() => pauseAnimation()} className="my-4">Pause</button>
