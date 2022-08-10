@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import Link from 'next/link';
+import Image from 'next/image';
 import BlockContent from '@sanity/block-content-to-react';
 import classNames from 'classnames';
 
@@ -8,6 +11,10 @@ import { usePreviewSubscription } from '../sanity/helpers';
 import Layout from '../components/Layout';
 import Hero from '../components/Hero';
 import SectionIllustrations from '../components/SectionIllustrations';
+
+import githubLogo from '../public/images/github_logo.svg';
+import medPerfLogo from '../public/images/medperf_logo.svg';
+import medPerfLogoGreen from '../public/images/medperf_logo_green.svg';
 
 const Index = ({ indexData, preview }) => {
   const { data } = usePreviewSubscription(indexQuery, {
@@ -41,10 +48,21 @@ const Index = ({ indexData, preview }) => {
       siteName={siteSettings.name}
     >
       <div className="w-full flex flex-col items-center justify-center">
-        <div className="w-full p-4 md:p-12 bg-primary">
-          <div className="max-w-screen-lg mx-4 md:mx-auto">
-            <h1 className="h1">{siteSettings.name}</h1>
-            <h2 className="h2">{headline}</h2>
+        <div className="w-full p-4 bg-primary">
+          <div className="w-full flex items-center justify-end space-x-4 text-sm">
+            <Link href="/documentation">
+              <a>Documentation</a>
+            </Link>
+            <a href="mailto:info@medperf.org">Contact</a>
+            <a href="githubRepo">
+              <Image src={githubLogo} alt="MedPerf Github Repo Link" />
+            </a>
+          </div>
+          <div className="md:p-8">
+            <div className="max-w-screen-lg mx-4 md:mx-auto py-8 md:py-8 flex flex-col space-y-4 md:space-y-8 justify-center">
+              <Image src={medPerfLogo} alt={siteSettings.name} />
+              <h2 className="h2 text-center">{headline}</h2>
+            </div>
           </div>
           {hero && <Hero hero={hero} />}
         </div>
@@ -75,6 +93,22 @@ const Index = ({ indexData, preview }) => {
                 </div>
               </section>
             ))}
+          </div>
+        </div>
+        <div className="w-full p-4 md:p-12 bg-light-gray">
+          <div className="max-w-screen-lg md:mx-auto flex justify-between">
+            <div>
+              <div className="w-20">
+                <Image src={medPerfLogoGreen} alt={siteSettings.name} />
+              </div>
+              <p className="text-sm text-dark-gray">
+                Powered by <a href="https://mlcommons.org" className="underline">ML Commons</a>
+              </p>
+            </div>
+
+            <div className="text-sm">
+              &copy; 2020 - 2022 MLCommons
+            </div>
           </div>
         </div>
       </div>
