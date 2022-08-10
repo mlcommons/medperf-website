@@ -23,7 +23,12 @@ const Section = ({ section, i }) => (
       <div className="mb-1">
         <small>{section.label}</small>
       </div>
-      <h3 className="h2">{section.title}</h3>
+      <div className="flex space-x-4">
+        <h3 className="h2">{section.title}</h3>
+        <div className="block md:hidden -mt-0.5">
+          <SectionIllustrations id={section.id} reverseColors className="w-20 h-auto" />
+        </div>
+      </div>
       <div className="richTextFormatting">
         <PortableText value={section.text} />
       </div>

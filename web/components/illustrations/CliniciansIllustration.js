@@ -1,5 +1,12 @@
-const CliniciansIllustration = () => (
-  <svg width="127" height="101" viewBox="0 0 127 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+const CliniciansIllustration = ({ className }) => (
+  <svg
+    width="127"
+    height="101"
+    viewBox="0 0 127 101"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
     <rect x="35.5" y="39.5" width="90" height="60" rx="6.5" fill="#CCEBD4" stroke="black" strokeWidth="3" />
     <path d="M46.75 65H59.75C59.2994 61.0498 57.425 57.8762 54.9904 56.8343C56.312 56.1646 57.2232 54.7557 57.2232 53.125C57.2224 50.8473 55.4443 49 53.25 49C51.0557 49 49.2768 50.8473 49.2768 53.1259C49.2768 54.7557 50.1872 56.1655 51.5096 56.8352C49.075 57.8762 47.2006 61.0507 46.75 65Z" fill="white" />
     <line x1="46.75" y1="72.5" x2="77.75" y2="72.5" stroke="white" strokeWidth="3" />

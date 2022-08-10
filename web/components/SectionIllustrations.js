@@ -3,19 +3,19 @@ import CliniciansIllustration from './illustrations/CliniciansIllustration';
 import ResearchersIllustration from './illustrations/ResearchersIllustration';
 import ResultsIllustration from './illustrations/ResultsIllustration';
 
-const SectionIllustrations = ({ id, reverseColors }) => (
+const SectionIllustrations = ({ id, reverseColors, className }) => (
   <>
     {id === 'benchmark-committee' && (
-      <BenchmarkIllustration />
+      <BenchmarkIllustration className={className} />
     )}
     {id === 'researchers' && (
-      <ResearchersIllustration lineFill={reverseColors && 'var(--primary-color)'} />
+      <ResearchersIllustration lineFill={reverseColors && 'var(--primary-color)'} className={className} />
     )}
     {id === 'clinicians' && (
-      <CliniciansIllustration />
+      <CliniciansIllustration className={className} />
     )}
     {id === 'results' && (
-      <ResultsIllustration />
+      <ResultsIllustration className={className} />
     )}
   </>
 );

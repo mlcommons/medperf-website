@@ -60,6 +60,10 @@ small {
   @apply mb-4;
 }
 
+.richTextFormatting a {
+  @apply underline;
+}
+
 @media screen and (max-width: 767px) {
   .rolesAnimation {
     @apply transition-transform duration-500;

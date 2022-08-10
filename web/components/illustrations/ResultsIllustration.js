@@ -1,5 +1,12 @@
-const ResultsIllustration = () => (
-  <svg width="130" height="157" viewBox="0 0 130 157" fill="none" xmlns="http://www.w3.org/2000/svg">
+const ResultsIllustration = ({ className }) => (
+  <svg
+    width="130"
+    height="157"
+    viewBox="0 0 130 157"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
     <rect x="1.5" y="1.5" width="127" height="154" fill="#CCEBD4" stroke="black" strokeWidth="3" strokeLinejoin="round" />
     <path d="M16 71.5L48.5 85L76.5 77.5L113.5 93.5" stroke="white" strokeWidth="3" />
     <circle cx="113.5" cy="93.5" r="3.5" fill="white" />
