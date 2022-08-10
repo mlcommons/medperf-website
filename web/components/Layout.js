@@ -31,7 +31,7 @@ const Layout = ({
         )}
       </Head>
       {preview && (
-        <div className="absolute top-4 left-0 flex flex-col items-center w-full gap-x-4 border-b border-lime-500 pb-4">
+        <div className="absolute top-4 left-0 flex flex-col pl-4 w-full gap-x-4 border-b border-lime-500 pb-4">
           <h2>Preview Mode</h2>
           <a href={`/api/exit-preview?document=${slug}`} className="underline">
             Exit Preview

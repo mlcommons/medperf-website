@@ -12,6 +12,7 @@ export default {
       name: 'buttonText',
       title: 'Button Text',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'link',

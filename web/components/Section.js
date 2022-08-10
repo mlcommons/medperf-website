@@ -30,19 +30,22 @@ const Section = ({ section, i }) => (
       {section.richContent?.map((content) => (
         <>
           {content._type === 'calloutBox' && (
-            <div className="bg-primary p-4 mt-4">
+            <div className="bg-primary p-4 mt-6">
               <p className="text-sm mb-2">{content.title}</p>
               <div className="flex flex-col md:flex-row-reverse space-y-4 md:space-y-0">
-                <div className="relative h-16 md:h-24 w-28 shrink-0">
-                  <Image
-                    src={urlForImage(content.image).width(300).url()}
-                    layout="fill"
-                    sizes="15rem"
-                    width={150}
-                    height={150}
-                    className="object-contain object-left md:object-right-top"
-                  />
-                </div>
+                {content.image.asset && (
+                  <div className="relative h-16 md:h-24 w-28 shrink-0">
+                    <Image
+                      src={urlForImage(content.image).width(300).url()}
+                      layout="fill"
+                      sizes="15rem"
+                      width={150}
+                      height={150}
+                      alt={content.image.alt}
+                      className="object-contain object-left md:object-right-top"
+                    />
+                  </div>
+                )}
                 <div className="richTextFormatting md:mr-6">
                   <PortableText value={content.text} />
                 </div>
@@ -50,13 +53,28 @@ const Section = ({ section, i }) => (
             </div>
           )}
           {content._type === 'callToAction' && (
-            <div className="font-mono text-dark-gray">
-              Call to action section
+            <div className="mt-6">
+              <p className="mb-6">
+                {content.text}
+              </p>
+              <a href={content.link} className="button">{content.buttonText}</a>
             </div>
           )}
           {content._type === 'resultsMap' && (
-            <div className="font-mono text-dark-gray">
-              Results map
+            <div className="border">
+              <div className="bg-primary font-mono text-sm p-4 pr-16 border-b">
+                {content.title}
+              </div>
+              <div className="bg-light-gray p-4">
+                {content.description && (
+                  <div className="text-sm mb-4">
+                    {content.description}
+                  </div>
+                )}
+                <div className="font-mono text-sm text-dark-gray">
+                  &lt;Results map&gt;
+                </div>
+              </div>
             </div>
           )}
         </>

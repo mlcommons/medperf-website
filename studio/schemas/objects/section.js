@@ -7,6 +7,7 @@ export default {
       name: 'label',
       title: 'Label',
       type: 'string',
+      description: 'If this section should have a number in the label, include it here.',
     },
     {
       name: 'id',

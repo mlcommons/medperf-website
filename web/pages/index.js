@@ -69,7 +69,7 @@ const Index = ({ indexData, preview }) => {
         <div className="p-4 md:p-12">
           <div className="max-w-screen-lg md:mx-auto">
             {sections.length > 0 && sections.map((section, i) => (
-              <Section section={section} i={i} />
+              <Section section={section} i={i} key={section.id} />
             ))}
           </div>
         </div>
