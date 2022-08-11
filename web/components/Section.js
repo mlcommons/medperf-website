@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { Fragment } from 'react';
 import { PortableText } from '@portabletext/react';
 import classNames from 'classnames';
 
@@ -33,7 +34,7 @@ const Section = ({ section, i }) => (
         <PortableText value={section.text} />
       </div>
       {section.richContent?.map((content) => (
-        <>
+        <Fragment key={content._key}>
           {content._type === 'calloutBox' && (
             <div className="bg-primary p-4 mt-6">
               <p className="text-sm mb-2">{content.title}</p>
@@ -44,8 +45,6 @@ const Section = ({ section, i }) => (
                       src={urlForImage(content.image).width(300).url()}
                       layout="fill"
                       sizes="15rem"
-                      width={150}
-                      height={150}
                       alt={content.image.alt}
                       className="object-contain object-left md:object-right-top"
                     />
@@ -82,7 +81,7 @@ const Section = ({ section, i }) => (
               </div>
             </div>
           )}
-        </>
+        </Fragment>
       ))}
     </div>
   </section>
