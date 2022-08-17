@@ -38,6 +38,11 @@ export default {
       type: 'url',
     },
     {
+      name: 'privacyPolicy',
+      title: 'Privacy policy URL',
+      type: 'url',
+    },
+    {
       name: 'seo',
       title: 'SEO',
       type: 'seo',

@@ -5,6 +5,7 @@ const metadataQuery = `
     name,
     email,
     github,
+    privacyPolicy,
     "seoDescription": seo.description,
     "seoImage": seo.openGraphImage,
   }

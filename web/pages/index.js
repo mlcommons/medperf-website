@@ -108,7 +108,7 @@ const Index = ({ indexData, preview }) => {
             <div className="text-sm">
               &copy; 2020 - 2022 MLCommons
               <br />
-              <a href="privacy" className="underline">Privacy Policy</a>
+              <a href={siteSettings.privacyPolicy || 'https://mlcommons.org/en/policies/'} className="underline">Privacy Policy</a>
             </div>
           </div>
         </div>
