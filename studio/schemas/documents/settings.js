@@ -33,8 +33,13 @@ export default {
       ],
     },
     {
+      name: 'documentation',
+      title: 'Documentation URL',
+      type: 'url',
+    },
+    {
       name: 'github',
-      title: 'Github repository',
+      title: 'Github repository URL',
       type: 'url',
     },
     {

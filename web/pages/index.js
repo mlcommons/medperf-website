@@ -15,6 +15,11 @@ import medPerfLogo from '../public/images/medperf_logo.svg';
 import medPerfLogoGreen from '../public/images/medperf_logo_green.svg';
 import mlCommonsLogo from '../public/images/mlc_lockup_black.svg';
 
+const fallbackDocumentationUrl = 'https://github.com/mlcommons/medperf';
+const fallbackContactEmail = 'info@medperf.org';
+const fallbackGithubUrl = 'https://github.com/mlcommons/medperf';
+const fallbackPrivacyUrl = 'https://mlcommons.org/en/policies/';
+
 const Index = ({ indexData, preview }) => {
   const { data } = usePreviewSubscription(indexQuery, {
     initialData: indexData,
@@ -49,13 +54,10 @@ const Index = ({ indexData, preview }) => {
       <div className="w-full flex flex-col items-center justify-center">
         <div className="w-full p-4 bg-primary">
           <div className="w-full flex items-center justify-end space-x-4 text-sm">
-            <Link href="/documentation">
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a>Documentation</a>
-            </Link>
-            <a href={`mailto:${siteSettings.email || 'info@medperf.org'}`}>Contact</a>
+            <a href={siteSettings.documentation || fallbackDocumentationUrl} target="_blank" rel="noreferrer">Documentation</a>
+            <a href={`mailto:${siteSettings.email || fallbackContactEmail}`} target="_blank" rel="noreferrer">Contact</a>
             {siteSettings.github && (
-              <a href={siteSettings.github} className="w-4 h-4">
+              <a href={siteSettings.github || fallbackGithubUrl} target="_blank" rel="noreferrer" className="w-4 h-4">
                 <Image src={githubLogo} alt={`Go to ${siteSettings.name} Github Repo`} />
               </a>
             )}
@@ -108,7 +110,7 @@ const Index = ({ indexData, preview }) => {
             <div className="text-sm">
               &copy; 2020 - 2022 MLCommons
               <br />
-              <a href={siteSettings.privacyPolicy || 'https://mlcommons.org/en/policies/'} className="underline">Privacy Policy</a>
+              <a href={siteSettings.privacyPolicy || fallbackPrivacyUrl} target="_blank" rel="noreferrer" className="underline">Privacy Policy</a>
             </div>
           </div>
         </div>

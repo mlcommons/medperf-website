@@ -4,6 +4,7 @@ const metadataQuery = `
   "siteSettings": *[_type == "settings"][0]{
     name,
     email,
+    documentation,
     github,
     privacyPolicy,
     "seoDescription": seo.description,
