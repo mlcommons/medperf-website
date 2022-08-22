@@ -2,20 +2,18 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { getClient } from '../sanity/server';
-import indexQuery from '../sanity/queries';
+import { indexQuery } from '../sanity/queries';
 import { usePreviewSubscription } from '../sanity/helpers';
 
 import Layout from '../components/Layout';
+import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Section from '../components/Section';
 import ArrowUp from '../components/illustrations/ArrowUp';
+import Footer from '../components/Footer';
 
 import medPerfLogo from '../public/images/medperf_logo.svg';
-import medPerfLogoGreen from '../public/images/medperf_logo_green.svg';
 import mlCommonsLogo from '../public/images/mlc_lockup_black.svg';
-import Header from '../components/Header';
-
-const fallbackPrivacyUrl = 'https://mlcommons.org/en/policies/';
 
 const Index = ({ indexData, preview }) => {
   const { data } = usePreviewSubscription(indexQuery, {
@@ -52,7 +50,7 @@ const Index = ({ indexData, preview }) => {
         <div className="md:p-8">
           <div className="max-w-screen-lg mx-4 md:mx-auto py-8 md:py-8 flex flex-col space-y-4 md:space-y-8 justify-center">
             <Image src={medPerfLogo} alt={`${siteSettings.name} Logo`} />
-            <h2 className="h2 text-center">{headline}</h2>
+            <h1 className="h2 text-center">{headline}</h1>
           </div>
         </div>
         {hero && (
@@ -85,24 +83,7 @@ const Index = ({ indexData, preview }) => {
           ))}
         </div>
       </div>
-      <div className="w-full p-4 md:p-12 bg-light-gray">
-        <div className="max-w-screen-lg md:mx-auto flex justify-between items-end">
-          <div>
-            <div className="w-20">
-              <Image src={medPerfLogoGreen} alt={`${siteSettings.name} Logo`} />
-            </div>
-            <p className="text-sm text-dark-gray">
-              Powered by <a href="https://mlcommons.org" className="underline">ML Commons</a>
-            </p>
-          </div>
-
-          <div className="text-sm">
-            &copy; 2020 - 2022 MLCommons
-            <br />
-            <a href={siteSettings.privacyPolicy || fallbackPrivacyUrl} target="_blank" rel="noreferrer" className="underline">Privacy Policy</a>
-          </div>
-        </div>
-      </div>
+      <Footer siteSettings={siteSettings} />
     </Layout>
   );
 };

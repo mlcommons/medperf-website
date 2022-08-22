@@ -25,7 +25,7 @@ const Section = ({ section, i }) => (
         <small>{section.label}</small>
       </div>
       <div className="flex space-x-4">
-        <h3 className="h2">{section.title}</h3>
+        <h2 className="h2">{section.title}</h2>
         <div className="block md:hidden -mt-0.5">
           <SectionIllustrations id={section.id} reverseColors className="w-20 h-auto" />
         </div>

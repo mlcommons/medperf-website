@@ -44,8 +44,16 @@ small {
 }
 
 /* Rich text formatting */
+.richTextFormatting h2 {
+  @apply text-lg md:text-2xl mb-4;
+}
+
 .richTextFormatting p {
   @apply mb-4;
+}
+
+.richTextFormatting p:empty {
+  @apply pb-4;
 }
 
 .richTextFormatting p:last-child {

@@ -6,6 +6,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // We import object and document schemas
 import homepage from './documents/homepage';
+import benchmarkSample from './documents/benchmarkSample';
 import settings from './documents/settings';
 
 import role from './objects/role';
@@ -26,6 +27,7 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     homepage,
+    benchmarkSample,
     settings,
 
     role,

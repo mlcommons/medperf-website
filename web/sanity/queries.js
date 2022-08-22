@@ -12,9 +12,12 @@ const metadataQuery = `
   }
 `;
 
-const indexQuery = `*[_type == "homepage"][0]{
+export const indexQuery = `*[_type == "homepage"][0]{
   ...,
   ${metadataQuery},
 }`;
 
-export default indexQuery;
+export const benchmarkSampleQuery = `*[_type == "benchmarkSample"][0]{
+  ...,
+  ${metadataQuery},
+}`;

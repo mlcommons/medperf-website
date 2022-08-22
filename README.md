@@ -55,3 +55,10 @@ You'll need to do two things at sanity.io/manage in order to show previews on th
 - When creating new Vercel projects for each sub-directory, you'll need to set the root directory for each app to `studio/` and `web/`, respectively.
 - As noted above, each of the 2 apps should have their respective environment variables added.
 - This could easily be Netlify or any other hosting service. The Sanity admin has a plugin installed, `sanity-plugin-vercel-deploy`, and a config file `studio/vercel.json`, that can be swapped for another host's tools.
+
+### Sanity Tips
+
+- Currently, since each Sanity document wants one-and-only-one of its kind (e.g. homepage, benchmark sample, and site settings), there are settings in two files that disable:
+  - Deleting the document (in `studio/config/resolveDocumentActions.js`)
+  - Allowing new documents of these schemas to be created (in `studio/config/newDocumentStructure.js`)
+- If you need to change either of these rules, you can safely edit and/or delete these files to customize

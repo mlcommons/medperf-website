@@ -1,4 +1,4 @@
-import indexQuery from '../../sanity/queries';
+import { indexQuery, benchmarkSampleQuery } from '../../sanity/queries';
 import { previewClient } from '../../sanity/server';
 
 export default async function preview(req, res) {
@@ -20,12 +20,22 @@ export default async function preview(req, res) {
     const indexData = await previewClient.fetch(indexQuery);
 
     if (!indexData) {
-      return res.status(401).json({ message: 'Could not find settings to show on index page' });
+      return res.status(401).json({ message: 'Could not find content to show on index page' });
     }
 
     res.setPreviewData({});
 
     res.writeHead(307, { Location: '/' });
+  } else if (id === 'benchmarkSample') {
+    const benchmarkSampleData = await previewClient.fetch(benchmarkSampleQuery);
+
+    if (!benchmarkSampleData) {
+      return res.status(401).json({ message: 'Could not find content to show on benchmark sample page' });
+    }
+
+    res.setPreviewData({});
+
+    res.writeHead(307, { Location: '/benchmarks' });
   } else {
     // console.log('No match');
     res.status(401).json({ message: 'Could not find any of those previews' });
