@@ -16,7 +16,7 @@ const Footer = ({ siteSettings }) => (
       </div>
 
       <div className="text-sm">
-        &copy; 2020 - 2022 MLCommons
+        &copy; 2020 &ndash; {new Date().getFullYear()} MLCommons
         <br />
         <a href={siteSettings.privacyPolicy || fallbackPrivacyUrl} target="_blank" rel="noreferrer" className="underline">Privacy Policy</a>
       </div>
