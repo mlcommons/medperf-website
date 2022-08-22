@@ -10,14 +10,11 @@ import Hero from '../components/Hero';
 import Section from '../components/Section';
 import ArrowUp from '../components/illustrations/ArrowUp';
 
-import githubLogo from '../public/images/github_logo.svg';
 import medPerfLogo from '../public/images/medperf_logo.svg';
 import medPerfLogoGreen from '../public/images/medperf_logo_green.svg';
 import mlCommonsLogo from '../public/images/mlc_lockup_black.svg';
+import Header from '../components/Header';
 
-const fallbackDocumentationUrl = 'https://github.com/mlcommons/medperf';
-const fallbackContactEmail = 'info@medperf.org';
-const fallbackGithubUrl = 'https://github.com/mlcommons/medperf';
 const fallbackPrivacyUrl = 'https://mlcommons.org/en/policies/';
 
 const Index = ({ indexData, preview }) => {
@@ -46,72 +43,63 @@ const Index = ({ indexData, preview }) => {
     <Layout
       preview={preview}
       slug=""
+      title={pageTitle}
       description={siteSettings.seoDescription}
       image={siteSettings.seoImage}
-      title={pageTitle}
       siteName={siteSettings.name}
     >
-      <div className="w-full flex flex-col items-center justify-center">
-        <div className="w-full p-4 bg-primary">
-          <div className="w-full flex items-center justify-end space-x-4 text-sm">
-            <a href={siteSettings.documentation || fallbackDocumentationUrl} target="_blank" rel="noreferrer">Documentation</a>
-            <a href={`mailto:${siteSettings.email || fallbackContactEmail}`} target="_blank" rel="noreferrer">Contact</a>
-            {siteSettings.github && (
-              <a href={siteSettings.github || fallbackGithubUrl} target="_blank" rel="noreferrer" className="w-4 h-4">
-                <Image src={githubLogo} alt={`Go to ${siteSettings.name} Github Repo`} />
-              </a>
-            )}
+      <Header siteSettings={siteSettings}>
+        <div className="md:p-8">
+          <div className="max-w-screen-lg mx-4 md:mx-auto py-8 md:py-8 flex flex-col space-y-4 md:space-y-8 justify-center">
+            <Image src={medPerfLogo} alt={`${siteSettings.name} Logo`} />
+            <h2 className="h2 text-center">{headline}</h2>
           </div>
-          <div className="md:p-8">
-            <div className="max-w-screen-lg mx-4 md:mx-auto py-8 md:py-8 flex flex-col space-y-4 md:space-y-8 justify-center">
-              <Image src={medPerfLogo} alt={`${siteSettings.name} Logo`} />
-              <h2 className="h2 text-center">{headline}</h2>
-            </div>
-          </div>
+        </div>
+        {hero && (
           <div id="top">
-            {hero && <Hero hero={hero} />}
+            <Hero hero={hero} />
           </div>
-          <div className="flex space-x-2 items-center justify-center pt-8 pb-4">
-            <span className="text-sm">
-              Powered by
-            </span>
-            <a href="https://mlcommons.org">
-              <Image src={mlCommonsLogo} alt="Go to MLCommons" />
-            </a>
-          </div>
+        )}
+        <div className="flex space-x-2 items-center justify-center pt-8 pb-4">
+          <span className="text-sm">
+            Powered by
+          </span>
+          <a href="https://mlcommons.org">
+            <Image src={mlCommonsLogo} alt="Go to MLCommons" />
+          </a>
         </div>
-        <div className="p-4 md:p-12 relative w-full">
-          <Link href="#top" scroll={false} passHref>
-            <button
-              type="button"
-              className="hidden md:flex sticky top-8 left-full -mt-4 -mr-4 items-center space-x-2 text-sm text-dark-gray"
-            >
-              <ArrowUp />
-              <div>Back to top</div>
-            </button>
-          </Link>
-          <div className="max-w-screen-lg md:mx-auto">
-            {sections.length > 0 && sections.map((section, i) => (
-              <Section section={section} i={i} key={section.id} />
-            ))}
-          </div>
+      </Header>
+      <div className="p-4 md:p-12 relative w-full">
+        <Link href="#top" scroll={false} passHref>
+          <button
+            type="button"
+            className="hidden md:flex sticky top-8 left-full -mt-4 -mr-4 items-center space-x-2 text-sm text-dark-gray"
+          >
+            <ArrowUp />
+            <div>Back to top</div>
+          </button>
+        </Link>
+        <div className="max-w-screen-lg md:mx-auto">
+          {sections.length > 0 && sections.map((section, i) => (
+            <Section section={section} i={i} key={section.id} />
+          ))}
         </div>
-        <div className="w-full p-4 md:p-12 bg-light-gray">
-          <div className="max-w-screen-lg md:mx-auto flex justify-between items-end">
-            <div>
-              <div className="w-20">
-                <Image src={medPerfLogoGreen} alt={`${siteSettings.name} Logo`} />
-              </div>
-              <p className="text-sm text-dark-gray">
-                Powered by <a href="https://mlcommons.org" className="underline">ML Commons</a>
-              </p>
+      </div>
+      <div className="w-full p-4 md:p-12 bg-light-gray">
+        <div className="max-w-screen-lg md:mx-auto flex justify-between items-end">
+          <div>
+            <div className="w-20">
+              <Image src={medPerfLogoGreen} alt={`${siteSettings.name} Logo`} />
             </div>
+            <p className="text-sm text-dark-gray">
+              Powered by <a href="https://mlcommons.org" className="underline">ML Commons</a>
+            </p>
+          </div>
 
-            <div className="text-sm">
-              &copy; 2020 - 2022 MLCommons
-              <br />
-              <a href={siteSettings.privacyPolicy || fallbackPrivacyUrl} target="_blank" rel="noreferrer" className="underline">Privacy Policy</a>
-            </div>
+          <div className="text-sm">
+            &copy; 2020 - 2022 MLCommons
+            <br />
+            <a href={siteSettings.privacyPolicy || fallbackPrivacyUrl} target="_blank" rel="noreferrer" className="underline">Privacy Policy</a>
           </div>
         </div>
       </div>

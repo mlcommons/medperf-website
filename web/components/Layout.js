@@ -38,7 +38,9 @@ const Layout = ({
           </a>
         </div>
       )}
-      {children}
+      <div className="w-full flex flex-col items-center justify-center">
+        {children}
+      </div>
     </>
   );
 };
