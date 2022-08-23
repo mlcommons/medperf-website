@@ -2,19 +2,13 @@ import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import classNames from 'classnames';
 
 import mapAnimation from '../public/animations/mapAnimation.json';
 
 import Arrow from './illustrations/Arrow';
 import SectionIllustrations from './SectionIllustrations';
-
-const timeline = gsap.timeline({
-  defaults: {
-    duration: 0.4,
-    ease: 'power2.out',
-  },
-});
 
 const Hero = ({ hero }) => {
   const { title, description, roles } = hero;
@@ -26,8 +20,9 @@ const Hero = ({ hero }) => {
   const [animation, setAnimation] = useState();
   const [totalFrames, setTotalFrames] = useState();
   const [sectionFrames, setSectionFrames] = useState();
-
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const [timeline, setTimeline] = useState();
   const [isComplete, setIsComplete] = useState(false);
   const [isNarrowScreen, setIsNarrowScreen] = useState();
 
@@ -43,6 +38,7 @@ const Hero = ({ hero }) => {
     };
   }, []);
 
+  /* Create map animation */
   useEffect(() => {
     if (!illustrationContainer || animation) return;
     console.log('Animation loaded');
@@ -60,31 +56,33 @@ const Hero = ({ hero }) => {
     setSectionFrames(frames / 5);
   }, [animation, illustrationContainer]);
 
+  /* Create timeline */
+  useEffect(() => {
+    const tl = gsap.timeline({
+      defaults: {
+        duration: 0.4,
+        ease: 'power2.out',
+      },
+    });
+    setTimeline(tl);
+  }, []);
+
   /** Play animation and set roles animation timeline */
   const playAnimation = () => {
     if (!animation) return;
-    /* On mobile, ensure container is at start position */
+
+    /* On mobile, ensure container is scrolled to start position */
     rolesContainer.current.scrollLeft = 0;
+
     animation.goToAndPlay(totalFrames / 5, true);
+    setIsComplete(false);
 
     if (isNarrowScreen) {
-      timeline.to(rolesSlides.current, {
-        x: 0,
-        onStart() {
-          setIsComplete(false);
-        },
-      });
-
+      timeline.to(rolesSlides.current, { x: 0 });
       timeline.to(rolesSlides.current, { x: '-12.5%' }, 2);
       timeline.to(rolesSlides.current, { x: '-37.5%' }, 4);
       timeline.to(rolesSlides.current, { x: '-62.5%' }, 6);
-
-      timeline.to(rolesSlides.current, {
-        x: 0,
-        onComplete() {
-          setIsComplete(true);
-        },
-      }, 8);
+      timeline.to(rolesSlides.current, { x: 0 }, 8);
     }
   };
 
@@ -102,6 +100,13 @@ const Hero = ({ hero }) => {
 
   animation?.addEventListener('complete', () => {
     animation.goToAndStop(0, true);
+    /** Delayed completion to allow for gsap animation to finish
+     * Since we only have the position transform on mobile and not desktop,
+     * this is the easiest way to apply this to both
+     */
+    setTimeout(() => {
+      setIsComplete(true);
+    }, 400);
   });
 
   /** Speed up setting the active slide index by 1/2 the length of the CSS transition
@@ -118,6 +123,38 @@ const Hero = ({ hero }) => {
     setActiveIndex(segmentIndex);
   });
 
+  /* Create scroll listeners to play animation */
+  useEffect(() => {
+    if (!illustrationContainer.current || !animation) return;
+    gsap.registerPlugin(ScrollTrigger);
+    const mm = gsap.matchMedia();
+
+    const sharedTriggerProps = {
+      trigger: illustrationContainer.current,
+      once: true,
+      onEnter: () => {
+        // console.log(`Triggered to play on ${isNarrowScreen ? 'narrow' : 'wide'} screens`);
+        playAnimation();
+      },
+    };
+
+    mm.add('(max-width:767px)', () => {
+      ScrollTrigger.create({
+        start: 'top 25%',
+        end: 'top 25%',
+        ...sharedTriggerProps,
+      });
+    });
+    mm.add('(min-width:768px)', () => {
+      ScrollTrigger.create({
+        start: 'top 20%',
+        end: 'top 20%',
+        ...sharedTriggerProps,
+      });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [illustrationContainer, animation]);
+
   return (
     <div className="max-w-screen-lg md:mx-auto border-white border-3 overflow-hidden">
       <h3 className="p-4 border-b-3 border-white font-mono text-sm">{title}</h3>
@@ -128,12 +165,15 @@ const Hero = ({ hero }) => {
             <button
               type="button"
               onClick={() => playAnimation()}
-              className="my-6 md:my-4 font-mono text-dark-gray flex space-x-2 items-center mx-auto md:mx-0 hover:text-black"
+              className={classNames({
+                'transition-opacity opacity-0 my-6 md:my-4 font-mono text-dark-gray flex space-x-2 items-center mx-auto md:mx-0 hover:text-black': true,
+                'opacity-100': isComplete,
+              })}
             >
               <svg width="15" height="17" viewBox="0 0 15 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M15 8.49995L0.75 16.7272L0.750001 0.272705L15 8.49995Z" fill="currentColor" />
               </svg>
-              <span>Play</span>
+              <span>Replay</span>
             </button>
             {/*
             <br />
