@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
+import { gsap } from 'gsap';
 import classNames from 'classnames';
 
 import mapAnimation from '../public/animations/mapAnimation.json';
@@ -8,15 +9,39 @@ import mapAnimation from '../public/animations/mapAnimation.json';
 import Arrow from './illustrations/Arrow';
 import SectionIllustrations from './SectionIllustrations';
 
+const timeline = gsap.timeline({
+  defaults: {
+    duration: 0.4,
+    ease: 'power2.out',
+  },
+});
+
 const Hero = ({ hero }) => {
   const { title, description, roles } = hero;
 
   const illustrationContainer = useRef(null);
+  const rolesContainer = useRef(null);
+  const rolesSlides = useRef(null);
+
   const [animation, setAnimation] = useState();
   const [totalFrames, setTotalFrames] = useState();
   const [sectionFrames, setSectionFrames] = useState();
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
+  const [isNarrowScreen, setIsNarrowScreen] = useState();
+
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 767px)');
+    setIsNarrowScreen(mql.matches);
+
+    const changeListener = (event) => setIsNarrowScreen(event.matches);
+
+    mql.addEventListener('change', changeListener);
+    return () => {
+      mql.removeEventListener('change', changeListener);
+    };
+  }, []);
 
   useEffect(() => {
     if (!illustrationContainer || animation) return;
@@ -35,9 +60,32 @@ const Hero = ({ hero }) => {
     setSectionFrames(frames / 5);
   }, [animation, illustrationContainer]);
 
+  /** Play animation and set roles animation timeline */
   const playAnimation = () => {
     if (!animation) return;
+    /* On mobile, ensure container is at start position */
+    rolesContainer.current.scrollLeft = 0;
     animation.goToAndPlay(totalFrames / 5, true);
+
+    if (isNarrowScreen) {
+      timeline.to(rolesSlides.current, {
+        x: 0,
+        onStart() {
+          setIsComplete(false);
+        },
+      });
+
+      timeline.to(rolesSlides.current, { x: '-12.5%' }, 2);
+      timeline.to(rolesSlides.current, { x: '-37.5%' }, 4);
+      timeline.to(rolesSlides.current, { x: '-62.5%' }, 6);
+
+      timeline.to(rolesSlides.current, {
+        x: 0,
+        onComplete() {
+          setIsComplete(true);
+        },
+      }, 8);
+    }
   };
 
   // const pauseAnimation = () => {
@@ -95,13 +143,25 @@ const Hero = ({ hero }) => {
             */}
           </div>
           <div>
-            <div ref={illustrationContainer} />
+            <div ref={illustrationContainer} className="max-w-sm mx-auto" />
           </div>
         </div>
         <br />
         <br />
-        <div className="overflow-x-scroll md:overflow-x-auto -mx-4 md:mx-0 pt-4 md:pt-0">
-          <ul className={`rolesAnimation rolesAnimation--${activeIndex} relative grid grid-cols-4 md:gap-x-12`}>
+        <div
+          ref={rolesContainer}
+          className={classNames({
+            'rolesAnimationContainer overflow-x-scroll md:overflow-x-auto -mx-4 md:mx-0 pt-4 md:pt-0': true,
+            'overflow-x-none pointer-events-none': activeIndex > 0,
+          })}
+        >
+          <ul
+            ref={rolesSlides}
+            className={classNames({
+              'rolesAnimation relative grid grid-cols-4 md:gap-x-12': true,
+              'rolesAnimation--overrideTransform': isComplete,
+            })}
+          >
             {roles.length > 0
               && roles.map(({ sectionId, name, description: roleDescription }, i) => (
                 <li

@@ -74,21 +74,16 @@ small {
 
 @media screen and (max-width: 767px) {
   .rolesAnimation {
-    @apply transition-transform duration-500;
     -webkit-overflow-scrolling: touch;
     position: relative;
     width: 200%;
   }
 
-  .rolesAnimation--2 {
-    transform: translateX(-12.5%);
+  .rolesAnimation--overrideTransform {
+    transform: none !important;
   }
 
-  .rolesAnimation--3 {
-    transform: translateX(-37.5%);
-  }
-
-  .rolesAnimation--4 {
-    transform: translateX(-62.5%);
+  .rolesAnimationContainer::-webkit-scrollbar {
+    display:none;
   }
 }
