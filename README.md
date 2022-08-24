@@ -3,13 +3,21 @@
 This site is built from https://github.com/singleportrait/sanity-next-js-starter. See that repo for more extensive instructions.
 ### Developing
 
-Using Lerna, both apps in the monorepo can be started from the root folder:
+This monorepo is run using the [Lerna CLI](https://github.com/lerna/lerna). You'll need to install that package globally to run both apps at once:
+
+```
+npm install --global lerna
+# Or
+npx lerna init
+```
+
+This will allow both apps in the monorepo to be started from the root folder:
 
 ```
 yarn run dev
 ```
 
-To run each independently, you can run:
+To run each app independently, you can run:
 
 ```
 # Sanity
