@@ -5,7 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import classNames from 'classnames';
 
-import mapAnimation from '../public/animations/mapAnimation.json';
+import mapAnimation from '../public/animations/mapAnimation--earlierTransitions.json';
 
 import Arrow from './illustrations/Arrow';
 import SectionIllustrations from './SectionIllustrations';
