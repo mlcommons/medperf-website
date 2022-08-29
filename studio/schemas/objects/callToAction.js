@@ -21,6 +21,7 @@ export default {
       validation: (Rule) => Rule.uri({
         scheme: ['http', 'https', 'mailto', 'tel'],
       }).required(),
+      description: 'This supports emails, phone numbers, or URLs. If this should be an email link, include "mailto:" at the beginning of the email.',
     },
   ],
   preview: {
