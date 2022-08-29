@@ -192,7 +192,7 @@ const Hero = ({ hero }) => {
           ref={rolesContainer}
           className={classNames({
             'rolesAnimationContainer overflow-x-scroll md:overflow-x-auto -mx-4 md:mx-0 pt-4 md:pt-0': true,
-            'overflow-x-none pointer-events-none': activeIndex > 0,
+            'overflow-x-none pointer-events-none md:pointer-events-auto': activeIndex > 0,
           })}
         >
           <ul
