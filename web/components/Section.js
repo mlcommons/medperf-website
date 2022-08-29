@@ -71,7 +71,7 @@ const Section = ({ section, i }) => (
               </div>
               <div className="bg-light-gray p-4">
                 {content.description && (
-                  <div className="text-sm mb-4">
+                  <div className="text-sm mb-4 whitespace-pre-wrap">
                     {content.description}
                   </div>
                 )}
