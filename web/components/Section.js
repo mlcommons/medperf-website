@@ -39,13 +39,13 @@ const Section = ({ section, i }) => (
             <div className="bg-primary p-4 mt-6">
               <p className="text-sm mb-2">{content.title}</p>
               <div className="flex flex-col md:flex-row-reverse space-y-4 md:space-y-0">
-                {content.image.asset && (
+                {content.image?.asset && (
                   <div className="relative h-16 md:h-24 w-28 shrink-0">
                     <Image
                       src={urlForImage(content.image).width(300).url()}
                       layout="fill"
                       sizes="15rem"
-                      alt={content.image.alt}
+                      alt={content.image?.alt}
                       className="object-contain object-left md:object-right-top"
                     />
                   </div>
