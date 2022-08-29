@@ -5,5 +5,5 @@ const previewSecret = process.env.SANITY_STUDIO_PREVIEW_SECRET;
 
 export default function resolveProductionUrl(document) {
   const baseUrl = process.env.NODE_ENV === 'production' ? prodUrl : devUrl;
-  return `${baseUrl}/api/preview?secret=${previewSecret}&document=${document._id}`;
-};
+  return `${baseUrl}api/preview?secret=${previewSecret}&document=${document._id}`;
+}
