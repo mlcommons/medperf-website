@@ -22,5 +22,11 @@ export default {
       title: 'Text',
       type: 'blockContent',
     },
+    {
+      name: 'seo',
+      type: 'seo',
+      title: 'SEO Info',
+      description: 'If this is not included, this will fall back to the "Site Settings" SEO info',
+    },
   ],
 };

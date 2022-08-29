@@ -8,9 +8,6 @@ import Layout from '../components/Layout';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const metaTitle = 'Benchmarks Sample Initiative';
-const metaDescription = 'A sample initiative by ML Commons and MedPerf.';
-
 const portableTextComponents = {
   types: {
     asset: ({ value }) => (
@@ -47,15 +44,20 @@ const Benchmarks = ({ benchmarkData, preview }) => {
       </Layout>
     );
   }
-  const { headline, text, siteSettings } = data;
+  const {
+    headline,
+    text,
+    seo,
+    siteSettings,
+  } = data;
 
   return (
     <Layout
       preview={preview}
       slug="/benchmarks"
-      title={metaTitle}
-      description={metaDescription}
-      image={siteSettings.seoImage}
+      title={headline}
+      description={seo.description || siteSettings.seoDescription}
+      image={seo.openGraphImage || siteSettings.seoImage}
       siteName={siteSettings.name}
     >
       <Header siteSettings={siteSettings} showHomeLink>
