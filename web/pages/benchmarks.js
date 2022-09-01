@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 import { getClient } from '../sanity/server';
 import { benchmarkSampleQuery } from '../sanity/queries';
-import { usePreviewSubscription } from '../sanity/helpers';
+import { urlForImage, usePreviewSubscription } from '../sanity/helpers';
 
 import Layout from '../components/Layout';
 import Header from '../components/Header';
@@ -37,6 +38,8 @@ const Benchmarks = ({ benchmarkData, preview }) => {
 
   const {
     headline,
+    image,
+    subtitle,
     text,
     seo,
     siteSettings,
@@ -60,6 +63,20 @@ const Benchmarks = ({ benchmarkData, preview }) => {
             <h1 className="h2">
               {headline}
             </h1>
+            <div className="flex space-x-4 items-center">
+              {image?.asset && (
+                <div className="relative h-8 md:h-12 w-20 shrink-0">
+                  <Image
+                    src={urlForImage(image).width(300).url()}
+                    layout="fill"
+                    sizes="10rem"
+                    alt={image?.alt}
+                    className="object-contain"
+                  />
+                </div>
+              )}
+              {subtitle && <p>{subtitle}</p>}
+            </div>
           </div>
         </div>
 

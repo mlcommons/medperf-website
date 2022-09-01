@@ -18,6 +18,18 @@ export default {
       description: 'Page title',
     },
     {
+      name: 'image',
+      title: 'Team Image',
+      type: 'asset',
+    },
+    {
+      name: 'subtitle',
+      title: 'Team Subtitle',
+      type: 'text',
+      description: 'Team name and/or subtitle beneath headline',
+      rows: 2,
+    },
+    {
       name: 'text',
       title: 'Text',
       type: 'blockContent',
