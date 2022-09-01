@@ -26,6 +26,7 @@ const Hero = ({ hero }) => {
   const [isComplete, setIsComplete] = useState(false);
   const [isNarrowScreen, setIsNarrowScreen] = useState();
 
+  /* Check on resizing if screen is narrow for different effects */
   useEffect(() => {
     const mql = window.matchMedia('(max-width: 767px)');
     setIsNarrowScreen(mql.matches);
@@ -38,10 +39,8 @@ const Hero = ({ hero }) => {
     };
   }, []);
 
-  /* Create map animation */
+  /* Create & destroy map animation */
   useEffect(() => {
-    if (!illustrationContainer || animation) return;
-    console.log('Animation loaded');
     const anim = lottie.loadAnimation({
       container: illustrationContainer.current,
       renderer: 'svg',
@@ -49,12 +48,13 @@ const Hero = ({ hero }) => {
       autoplay: false,
       animationData: mapAnimation,
     });
-    // console.log('Total frames', anim.totalFrames);
     const frames = anim.totalFrames;
     setAnimation(anim);
     setTotalFrames(frames);
     setSectionFrames(frames / 5);
-  }, [animation, illustrationContainer]);
+
+    return () => anim.destroy();
+  }, [illustrationContainer]);
 
   /* Create timeline */
   useEffect(() => {
@@ -69,7 +69,7 @@ const Hero = ({ hero }) => {
 
   /** Play animation and set roles animation timeline */
   const playAnimation = () => {
-    if (!animation) return;
+    if (!animation || !rolesContainer.current) return;
 
     /* On mobile, ensure container is scrolled to start position */
     rolesContainer.current.scrollLeft = 0;
