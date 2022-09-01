@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import { Fragment } from 'react';
-import { PortableText } from '@portabletext/react';
 import classNames from 'classnames';
 
 import { urlForImage } from '../sanity/helpers';
 
 import SectionIllustrations from './SectionIllustrations';
+import BlockContent from './BlockContent';
 
 const Section = ({ section, i }) => (
   <section
@@ -30,9 +30,7 @@ const Section = ({ section, i }) => (
           <SectionIllustrations id={section.id} reverseColors className="w-20 h-auto" />
         </div>
       </div>
-      <div className="richTextFormatting">
-        <PortableText value={section.text} />
-      </div>
+      <BlockContent content={section.text} />
       {section.richContent?.map((content) => (
         <Fragment key={content._key}>
           {content._type === 'calloutBox' && (
@@ -50,9 +48,7 @@ const Section = ({ section, i }) => (
                     />
                   </div>
                 )}
-                <div className="richTextFormatting md:mr-6">
-                  <PortableText value={content.text} />
-                </div>
+                <BlockContent content={content.text} className="md:mr-6" />
               </div>
             </div>
           )}
