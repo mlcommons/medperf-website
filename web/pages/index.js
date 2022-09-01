@@ -49,7 +49,7 @@ const Index = ({ indexData, preview }) => {
       <Header siteSettings={siteSettings}>
         <div className="md:p-8">
           <div className="max-w-screen-lg mx-4 md:mx-auto py-8 md:py-8 flex flex-col space-y-4 md:space-y-8 justify-center">
-            <Image src={medPerfLogo} alt={`${siteSettings.name} Logo`} />
+            <Image src={medPerfLogo} alt={`${siteSettings.name} Logo`} priority />
             <h1 className="h2 text-center">{headline}</h1>
           </div>
         </div>
