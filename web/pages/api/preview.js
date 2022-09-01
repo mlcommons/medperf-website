@@ -35,7 +35,8 @@ export default async function preview(req, res) {
 
     res.setPreviewData({});
 
-    res.writeHead(307, { Location: '/benchmarks' });
+    /* TODO: Remove ?preview=on once benchmarks is released, it will be superfluous */
+    res.writeHead(307, { Location: '/benchmarks?preview=on' });
   } else {
     // console.log('No match');
     res.status(401).json({ message: 'Could not find any of those previews' });

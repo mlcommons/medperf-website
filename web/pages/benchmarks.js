@@ -1,4 +1,5 @@
-import { PortableText } from '@portabletext/react';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 import { getClient } from '../sanity/server';
 import { benchmarkSampleQuery } from '../sanity/queries';
@@ -10,10 +11,21 @@ import Footer from '../components/Footer';
 import BlockContent from '../components/BlockContent';
 
 const Benchmarks = ({ benchmarkData, preview }) => {
+  /* TODO: Remove me to enable benchmarks again in production */
+  const router = useRouter();
+
   const { data } = usePreviewSubscription(benchmarkSampleQuery, {
     initialData: benchmarkData,
     enabled: preview,
   });
+
+  /* TODO: Remove me to enable benchmarks again in production */
+  useEffect(() => {
+    if (router.isReady && !router.query.preview
+      && !preview && process.env.NEXT_PUBLIC_DISABLE_BENCHMARKS_PAGE) {
+      router.push('/');
+    }
+  }, [preview, router]);
 
   if (!benchmarkData) {
     return (
