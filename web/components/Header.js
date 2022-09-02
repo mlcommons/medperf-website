@@ -4,10 +4,6 @@ import Link from 'next/link';
 import githubLogo from '../public/images/github_logo.svg';
 import medPerfLogo from '../public/images/medperf_logo.svg';
 
-const fallbackDocumentationUrl = 'https://github.com/mlcommons/medperf';
-const fallbackContactEmail = 'info@medperf.org';
-const fallbackGithubUrl = 'https://github.com/mlcommons/medperf';
-
 const Header = ({ siteSettings, showHomeLink = false, children }) => (
   <div className="w-full p-4 bg-primary">
     <div className="w-full flex items-center justify-between">
@@ -32,10 +28,14 @@ const Header = ({ siteSettings, showHomeLink = false, children }) => (
             </Link>
           </div>
         )}
-        <a href={siteSettings.documentation || fallbackDocumentationUrl} target="_blank" rel="noreferrer">Documentation</a>
-        <a href={`mailto:${siteSettings.email || fallbackContactEmail}`} target="_blank" rel="noreferrer">Contact</a>
+        {siteSettings.documentation && (
+          <a href={siteSettings.documentation} target="_blank" rel="noreferrer">Documentation</a>
+        )}
+        {siteSettings.email && (
+          <a href={`mailto:${siteSettings.email}`} target="_blank" rel="noreferrer">Contact</a>
+        )}
         {siteSettings.github && (
-          <a href={siteSettings.github || fallbackGithubUrl} target="_blank" rel="noreferrer" className="w-4 h-4">
+          <a href={siteSettings.github} target="_blank" rel="noreferrer" className="w-4 h-4">
             <Image src={githubLogo} alt={`Go to ${siteSettings.name} Github Repo`} />
           </a>
         )}
