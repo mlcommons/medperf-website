@@ -67,13 +67,21 @@ const Section = ({ section, i }) => (
               </div>
               <div className="bg-light-gray p-4">
                 {content.description && (
-                  <div className="text-sm mb-4 whitespace-pre-wrap">
+                  <div className="text-sm whitespace-pre-wrap">
                     {content.description}
                   </div>
                 )}
-                <div className="font-mono text-sm text-dark-gray">
-                  &lt;Results map&gt;
-                </div>
+                {content.image?.asset && (
+                  <div className="mt-4 relative h-40 md:h-52">
+                    <Image
+                      src={urlForImage(content.image).width(1000).url()}
+                      layout="fill"
+                      sizes="40rem"
+                      alt={content.image?.alt}
+                      className="object-contain"
+                    />
+                  </div>
+                )}
               </div>
             </div>
           )}
