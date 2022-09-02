@@ -3,7 +3,7 @@ export default async function exit(req, res) {
 
   const { document } = req.query;
 
-  const location = document ? `/${document}` : '/';
+  const location = document || '/';
 
   res.writeHead(307, { Location: location });
   res.end();

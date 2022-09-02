@@ -1,5 +1,5 @@
 # sanity build output
-studio/dist/
+studio/public/
 
 # next.js build output
 .next

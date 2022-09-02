@@ -12,7 +12,15 @@ export default () => {
             .schemaType('homepage')
             .documentId('homepage')
         )
-        .icon(() => <div style={{ fontSize: 22 }}>🏠</div>),
+        .icon(() => <div style={{fontSize: 22}}>🏠</div>),
+      S.listItem()
+        .title('Benchmark Sample')
+        .child(
+          S.document()
+            .schemaType('benchmarkSample')
+            .documentId('benchmarkSample')
+        )
+        .icon(() => <div style={{fontSize: 22}}>🔬</div>),
       S.divider(),
       S.listItem()
         .title('Site Settings')
@@ -21,11 +29,12 @@ export default () => {
             .schemaType('settings')
             .documentId('settings')
         )
-        .icon(() => <div style={{ fontSize: 22 }}>🛠</div>),
+        .icon(() => <div style={{fontSize: 22}}>🛠</div>),
       ...S.documentTypeListItems().filter((item) => {
         return ![
           'homepage',
-          'settings'
+          'benchmarkSample',
+          'settings',
         ].includes(item.getId());
       }),
     ]);

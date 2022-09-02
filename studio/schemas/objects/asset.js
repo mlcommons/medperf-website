@@ -3,7 +3,7 @@ export default {
   title: 'Asset',
   type: 'image',
   options: {
-    hotspot: true
+    hotspot: true,
   },
   fields: [
     {
@@ -14,7 +14,7 @@ export default {
       options: {
         isHighlighted: true,
       },
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     },
   ],
   preview: {

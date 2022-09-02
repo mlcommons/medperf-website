@@ -1,41 +1,98 @@
+/* Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Color variables */
+:root {
+  --primary-color: #CCEBD4;
+}
+
+/* Base */
 html {
   @apply font-sans;
-  font-size: 15px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: normal;
   line-height: 1.4;
+  scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
 }
 
-@media (min-width: 640px) {
+@media screen and (min-width: 768px) {
   html {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
-  @apply font-serif;
+/* Typography */
+.h1 {
+  @apply text-2xl md:text-3xl mb-4;
 }
 
-h1, .h1 {
-  font-size: 3rem;
+.h2,
+.h3,
+.h4 {
+  @apply text-lg md:text-2xl mb-4 leading-tight;
 }
 
-h2, .h2 {
-  font-size: 2rem;
+small {
+  @apply font-mono text-sm;
 }
 
-h3, .h3 {
-  font-size: 1.5rem;
+.button {
+  @apply border rounded-full py-2 px-4 hover:bg-light-gray;
 }
 
-h4, .h4 {
-  font-size: 1.25rem;
+/* Rich text formatting */
+.richTextFormatting h2 {
+  @apply text-lg md:text-2xl mb-4 leading-tight;
 }
 
 .richTextFormatting p {
   @apply mb-4;
+}
+
+.richTextFormatting p:empty {
+  @apply pb-4;
+}
+
+.richTextFormatting p:last-child {
+  @apply mb-0;
+}
+
+.richTextFormatting ul {
+  @apply list-disc ml-8;
+}
+
+.richTextFormatting li {
+  @apply mb-4;
+}
+
+.richTextFormatting li ul {
+  @apply mt-4;
+}
+
+.richTextFormatting a {
+  @apply underline;
+}
+
+.richTextFormatting strong,
+.richTextFormatting b {
+  @apply font-bold;
+}
+
+@media screen and (max-width: 767px) {
+  .rolesAnimation {
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    width: 200%;
+  }
+
+  .rolesAnimation--overrideTransform {
+    transform: none !important;
+  }
+
+  .rolesAnimationContainer::-webkit-scrollbar {
+    display:none;
+  }
 }

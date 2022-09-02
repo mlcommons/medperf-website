@@ -1,14 +1,20 @@
 // First, we must import the schema creator
-import createSchema from 'part:@sanity/base/schema-creator'
+import createSchema from 'part:@sanity/base/schema-creator';
 
 // Then import schema types from any plugins that might expose them
-import schemaTypes from 'all:part:@sanity/base/schema-type'
+import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // We import object and document schemas
 import homepage from './documents/homepage';
+import benchmarkSample from './documents/benchmarkSample';
 import settings from './documents/settings';
 
 import role from './objects/role';
+import section from './objects/section';
+import calloutBox from './objects/calloutBox';
+import callToAction from './objects/callToAction';
+import resultsMap from './objects/resultsMap';
+
 import blockContent from './objects/blockContent';
 import asset from './objects/asset';
 import seo from './objects/seo';
@@ -21,11 +27,16 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     homepage,
+    benchmarkSample,
     settings,
 
     role,
+    section,
+    calloutBox,
+    callToAction,
+    resultsMap,
     blockContent,
     asset,
     seo,
   ]),
-})
+});

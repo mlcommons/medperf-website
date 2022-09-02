@@ -1,4 +1,4 @@
-export default{
+export default {
   name: 'seo',
   title: 'SEO',
   type: 'object',
@@ -18,9 +18,9 @@ export default{
         {
           name: 'alt',
           type: 'string',
-          title: 'Alt Text'
-        }
+          title: 'Alt Text',
+        },
       ],
-    }
-  ]
-}
+    },
+  ],
+};
