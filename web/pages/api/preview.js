@@ -16,7 +16,7 @@ export default async function preview(req, res) {
   const isDraft = document.startsWith('drafts.');
   const id = isDraft ? document.slice(7) : document;
 
-  if (id === 'homepage') {
+  if (id === 'homepage' || id === 'settings') {
     const indexData = await previewClient.fetch(indexQuery);
 
     if (!indexData) {
@@ -39,7 +39,7 @@ export default async function preview(req, res) {
     res.writeHead(307, { Location: '/benchmarks?preview=on' });
   } else {
     // console.log('No match');
-    res.status(401).json({ message: 'Could not find any of those previews' });
+    res.status(401).json({ message: 'Could not find that page to preview' });
   }
 
   return res.end();
