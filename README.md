@@ -1,6 +1,7 @@
-# MedPerf Website: Sanity Studio Admin + Next.js Front-end
+# MedPerf Website
 
-This site is built from https://github.com/singleportrait/sanity-next-js-starter. See that repo for more extensive instructions.
+This site is built using [Sanity](https://sanity.io/) as the headless CMS, and [Next.js](https://nextjs.org/) as the front-end. It's currently hosted on [Vercel](https://vercel.com/).
+
 ### Developing
 
 This monorepo is run using the [Lerna CLI](https://github.com/lerna/lerna). You'll need to install that package globally to run both apps at once:
@@ -70,3 +71,7 @@ You'll need to do two things at sanity.io/manage in order to show previews on th
   - Deleting the document (in `studio/config/resolveDocumentActions.js`)
   - Allowing new documents of these schemas to be created (in `studio/config/newDocumentStructure.js`)
 - If you need to change either of these rules, you can safely edit and/or delete these files to customize
+
+### More
+
+This site is built from https://github.com/singleportrait/sanity-next-js-starter. See that repo for more extensive instructions.
