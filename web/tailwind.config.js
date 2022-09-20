@@ -42,6 +42,9 @@ module.exports = {
       scale: {
         80: '0.8',
       },
+      spacing: {
+        18: '4.5rem',
+      },
     },
   },
   plugins: [],
