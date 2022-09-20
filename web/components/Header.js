@@ -9,7 +9,7 @@ const Header = ({ siteSettings, showHomeLink = false, children }) => (
     <div className="w-full flex items-center justify-between">
       <div>
         {showHomeLink && (
-          <div className="w-20">
+          <div className="w-18 h-7">
             <Link href="/">
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a>
@@ -30,6 +30,9 @@ const Header = ({ siteSettings, showHomeLink = false, children }) => (
         )}
         {siteSettings.documentation && (
           <a href={siteSettings.documentation} target="_blank" rel="noreferrer">Documentation</a>
+        )}
+        {siteSettings.teams && (
+          <a href={siteSettings.teams} target="_blank" rel="noreferrer">Teams</a>
         )}
         {siteSettings.email && (
           <a href={`mailto:${siteSettings.email}`} target="_blank" rel="noreferrer">Contact</a>

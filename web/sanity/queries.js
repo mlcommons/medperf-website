@@ -5,6 +5,7 @@ const metadataQuery = `
     name,
     email,
     documentation,
+    teams,
     github,
     privacyPolicy,
     "seoDescription": seo.description,

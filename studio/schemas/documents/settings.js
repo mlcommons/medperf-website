@@ -38,6 +38,11 @@ export default {
       type: 'url',
     },
     {
+      name: 'teams',
+      title: 'Teams URL',
+      type: 'url',
+    },
+    {
       name: 'github',
       title: 'Github repository URL',
       type: 'url',
