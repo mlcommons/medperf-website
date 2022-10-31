@@ -32,7 +32,7 @@ const Header = ({ siteSettings, showHomeLink = false, children }) => (
           <a href={siteSettings.documentation} target="_blank" rel="noreferrer">Documentation</a>
         )}
         {siteSettings.teams && (
-          <a href={siteSettings.teams} target="_blank" rel="noreferrer">Teams</a>
+          <a href={siteSettings.teams} target="_blank" rel="noreferrer">Team</a>
         )}
         {siteSettings.email && (
           <a href={`mailto:${siteSettings.email}`} target="_blank" rel="noreferrer">Contact</a>
