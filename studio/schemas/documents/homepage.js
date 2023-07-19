@@ -36,15 +36,21 @@ export default {
           name: 'roles',
           title: 'Roles',
           type: 'array',
-          of: [{type: 'role'}],
+          of: [{ type: 'role' }],
         },
       ],
+    },
+    {
+      name: 'news',
+      title: 'news',
+      type: 'array',
+      of: [{ type: 'newsArticle' }],
     },
     {
       name: 'sections',
       title: 'Sections',
       type: 'array',
-      of: [{type: 'section'}],
+      of: [{ type: 'section' }],
     },
     {
       name: 'pageTitle',

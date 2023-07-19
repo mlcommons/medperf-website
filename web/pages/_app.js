@@ -4,6 +4,7 @@ import TagManager from 'react-gtm-module';
 
 import '../styles/fonts.css';
 import '../styles/globals.css';
+import '../styles/news.css';
 
 const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {

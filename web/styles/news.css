@@ -1,0 +1,165 @@
+*,
+*:before,
+*:after {
+    vertical-align: baseline;
+    font-weight: inherit;
+    font-family: inherit;
+    font-style: inherit;
+    margin: 0;
+    padding: 0;
+    /* border: 0; */
+    background-repeat: no-repeat;
+    /* box-sizing: border-box */
+}
+
+
+ul {
+    list-style: none;
+    padding: 0
+}
+
+:root {
+    --text-color: #000000;
+    --light-color: #f2f2f2;
+    --dark-color: #848484;
+    --bg-color: #FFFFFF;
+    --brand-color-1: #CCEBD4;
+    --brand-color-2: #FF6D6A;
+    --brand-color-3: #2088EF;
+    --gutter: 1rem;
+    --gut: 0.5rem
+}
+
+.grid-wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start
+}
+
+.page-pad {
+    padding-left: .5rem;
+    padding-right: .5rem
+}
+
+@media(min-width: 750px) {
+
+    .page-pad {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem
+    }
+}
+
+.col-pad {
+    padding-left: var(--gut);
+    padding-right: var(--gut)
+}
+
+.col-6 {
+    width: 50%
+}
+
+.col-12 {
+    width: 100%
+}
+
+@media(min-width: 1000px) {
+
+    .lg-col-3 {
+        width: 25%
+    }
+}
+
+* {
+    font-size: 100%
+}
+
+::selection {
+    background: var(--text-color);
+    color: var(--brand-color-1);
+    text-shadow: none
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color)
+}
+
+a:hover {
+    color: var(--brand-color-3)
+}
+
+.sans {
+    font-family: Helvetica, sans-serif
+}
+
+.mono {
+    font-family: "nb_international_mono", Helvetica, sans-serif;
+    font-weight: 400
+}
+
+.text-xs {
+    font-size: .75rem;
+    line-height: 1.3
+}
+
+.text-sm {
+    font-size: 1rem;
+    line-height: 1.3
+}
+
+.text-md {
+    font-size: 1.5rem;
+    line-height: 1
+}
+
+@media(min-width: 750px) {
+
+    .text-md {
+        font-size: 1.75rem
+    }
+}
+
+*:focus:not(:focus-visible) {
+    outline: none !important
+}
+
+a:focus {
+    outline: none
+}
+
+a:focus-visible {
+    outline: 1px solid var(--brand-color-1)
+}
+
+.recent-news {
+    margin-top: 2rem;
+    margin-bottom: 5rem
+}
+
+.recent-news__more {
+    margin: 1rem var(--gut);
+    text-decoration: none;
+    border: 1px solid var(--text-color);
+    padding: .5em 1em;
+    border-radius: 2em
+}
+
+.recent-news__headline {
+    margin-bottom: 1rem
+}
+
+.posts-list__item {
+    margin-bottom: 2rem
+}
+
+.posts-list time {
+    display: block;
+    width: 100%;
+    padding: .75rem 0;
+    border-top: 1px solid var(--text-color)
+}
+
+.posts-list h2 {
+    padding-bottom: 1rem
+}

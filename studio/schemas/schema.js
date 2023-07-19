@@ -11,6 +11,7 @@ import settings from './documents/settings';
 
 import role from './objects/role';
 import section from './objects/section';
+import newsArticle from './objects/newsArticle';
 import calloutBox from './objects/calloutBox';
 import callToAction from './objects/callToAction';
 import resultsMap from './objects/resultsMap';
@@ -31,6 +32,7 @@ export default createSchema({
     settings,
 
     role,
+    newsArticle,
     section,
     calloutBox,
     callToAction,
