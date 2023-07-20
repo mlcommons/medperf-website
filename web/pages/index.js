@@ -79,7 +79,7 @@ const Index = ({ indexData, preview }) => {
             <div>Back to top</div>
           </button>
         </Link>
-        <div className="recent-news page-pad">
+        <div>
           <h2 className="recent-news__headline col-pad col-12"><small>What’s New</small></h2>
 
           <ul className="posts-list grid-wrapper">
