@@ -94,12 +94,16 @@ const Benchmarks = ({ benchmarkData, preview }) => {
 };
 
 export async function getStaticProps({ preview = false }) {
-  const benchmarkData = await getClient(preview).fetch(benchmarkSampleQuery);
+  // const benchmarkData = await getClient(preview).fetch(benchmarkSampleQuery);
+  // return {
+  //   props: {
+  //     benchmarkData,
+  //     preview,
+  //   },
+  // };
+  // temporary fix to disable preview benchmarks page
   return {
-    props: {
-      benchmarkData,
-      preview,
-    },
+    notFound: true,
   };
 }
 
