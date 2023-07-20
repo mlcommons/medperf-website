@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-import { getClient } from '../sanity/server';
+// import { getClient } from '../sanity/server';
 import { benchmarkSampleQuery } from '../sanity/queries';
 import { urlForImage, usePreviewSubscription } from '../sanity/helpers';
 
@@ -93,13 +93,17 @@ const Benchmarks = ({ benchmarkData, preview }) => {
   );
 };
 
-export async function getStaticProps({ preview = false }) {
-  const benchmarkData = await getClient(preview).fetch(benchmarkSampleQuery);
+export async function getStaticProps({ preview = false }) { // eslint-disable-line no-unused-vars
+  // const benchmarkData = await getClient(preview).fetch(benchmarkSampleQuery);
+  // return {
+  //   props: {
+  //     benchmarkData,
+  //     preview,
+  //   },
+  // };
+  // temporary fix to disable preview benchmarks page
   return {
-    props: {
-      benchmarkData,
-      preview,
-    },
+    notFound: true,
   };
 }
 

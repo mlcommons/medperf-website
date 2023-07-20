@@ -9,6 +9,7 @@ import Layout from '../components/Layout';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Section from '../components/Section';
+import NewsArticle from '../components/NewsArticle';
 import ArrowUp from '../components/illustrations/ArrowUp';
 import Footer from '../components/Footer';
 
@@ -32,6 +33,7 @@ const Index = ({ indexData, preview }) => {
   const {
     headline,
     hero,
+    news,
     sections,
     pageTitle,
     siteSettings,
@@ -77,6 +79,16 @@ const Index = ({ indexData, preview }) => {
             <div>Back to top</div>
           </button>
         </Link>
+        <div>
+          <h2 className="recent-news__headline col-pad col-12"><small>What’s New</small></h2>
+
+          <ul className="posts-list grid-wrapper">
+            {news.length > 0 && news.map((newsArticle) => (
+              <NewsArticle newsArticle={newsArticle} key={newsArticle.id} />
+            ))}
+          </ul>
+        </div>
+        <hr />
         <div className="max-w-screen-lg md:mx-auto">
           {sections.length > 0 && sections.map((section, i) => (
             <Section section={section} i={i} key={section.id} />
