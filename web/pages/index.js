@@ -80,7 +80,7 @@ const Index = ({ indexData, preview }) => {
           </button>
         </Link>
         <div className="recent-news page-pad">
-          <h2 className="recent-news__headline text-xs col-pad col-12">What’s New</h2>
+          <h2 className="recent-news__headline col-pad col-12"><small>What’s New</small></h2>
 
           <ul className="posts-list grid-wrapper">
             {news.length > 0 && news.map((newsArticle) => (
