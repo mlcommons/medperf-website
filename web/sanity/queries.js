@@ -22,3 +22,8 @@ export const benchmarkSampleQuery = `*[_type == "benchmarkSample"][0]{
   ...,
   ${metadataQuery},
 }`;
+
+export const siteSettingsQuery = `*[_type == "settings"][0]{
+  ...,
+  ${metadataQuery},
+}`;
