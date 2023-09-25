@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { getClient } from '../sanity/server';
 import { siteSettingsQuery } from '../sanity/queries';
 import { usePreviewSubscription } from '../sanity/helpers';
-import { useState } from 'react';
 
 import Layout from '../components/Layout';
 import Header from '../components/Header';
@@ -12,7 +12,19 @@ const authDomain = process.env.NEXT_PUBLIC_AUTH_DOMAIN;
 
 const Index = ({ siteData, preview }) => {
   const router = useRouter();
+  // logic for the consent button
+  const [isChecked, setIsChecked] = useState(false);
+  const [cssClass, setCssClass] = useState('disabled:opacity-25');
 
+  const handleCheckboxChange = (e) => {
+    setIsChecked(e.target.checked);
+    if (e.target.checked) {
+      setCssClass('cursor-pointer');
+    } else {
+      setCssClass('disabled:opacity-25');
+    }
+  };
+  //
   const { data } = usePreviewSubscription(siteSettingsQuery, {
     initialData: siteData,
     enabled: preview,
@@ -34,19 +46,6 @@ const Index = ({ siteData, preview }) => {
   const state = router.query.state || '';
   const targetUrl = `https://${authDomain}/continue?state=${state}`;
 
-  // logic for the consent button
-  const [isChecked, setIsChecked] = useState(false);
-  const [cssClass, setCssClass] = useState("disabled:opacity-25");
-
-  const handleCheckboxChange = (e) => {
-    setIsChecked(e.target.checked);
-    if (e.target.checked) {
-      setCssClass("cursor-pointer");
-    }
-    else {
-      setCssClass("disabled:opacity-25");
-    }
-  }
   return (
     <Layout
       preview={preview}
