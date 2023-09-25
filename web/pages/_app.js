@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
 import TagManager from 'react-gtm-module';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 import '../styles/fonts.css';
 import '../styles/globals.css';
@@ -12,7 +13,13 @@ const MyApp = ({ Component, pageProps }) => {
   }, []);
 
   return (
-    <>
+    <Auth0Provider
+      domain="dev-5xl8y6uuc2hig2ly.us.auth0.com"
+      clientId="ZZub3F876aFJjcKTVH4hMpEVGpZtpNAJ"
+      authorizationParams={{
+        redirect_uri: typeof window !== 'undefined' && `${window.location.origin}/callback`,
+      }}
+    >
       <Head>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -24,7 +31,7 @@ const MyApp = ({ Component, pageProps }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Head>
       <Component {...pageProps} />
-    </>
+    </Auth0Provider>
   );
 };
 

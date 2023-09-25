@@ -48,7 +48,7 @@ const Index = ({ indexData, preview }) => {
       image={siteSettings.seoImage}
       siteName={siteSettings.name}
     >
-      <Header siteSettings={siteSettings}>
+      <Header siteSettings={siteSettings} showSignup>
         <div className="md:p-8">
           <div className="max-w-screen-lg mx-4 md:mx-auto py-8 md:py-8 flex flex-col space-y-4 md:space-y-8 justify-center">
             <Image src={medPerfLogo} alt={`${siteSettings.name} Logo`} priority />

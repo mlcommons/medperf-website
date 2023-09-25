@@ -3,8 +3,11 @@ import Link from 'next/link';
 
 import githubLogo from '../public/images/github_logo.svg';
 import medPerfLogo from '../public/images/medperf_logo.svg';
+import SignupButton from '../auth/components/signup';
 
-const Header = ({ siteSettings, showHomeLink = false, children }) => (
+const Header = ({
+  siteSettings, showHomeLink = false, showSignup = false, children,
+}) => (
   <div className="w-full p-4 bg-primary">
     <div className="w-full flex items-center justify-between">
       <div>
@@ -28,6 +31,7 @@ const Header = ({ siteSettings, showHomeLink = false, children }) => (
             </Link>
           </div>
         )}
+        {showSignup && <SignupButton />}
         {siteSettings.documentation && (
           <a href={siteSettings.documentation} target="_blank" rel="noreferrer">Documentation</a>
         )}
