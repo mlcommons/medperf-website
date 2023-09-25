@@ -18,6 +18,7 @@ const MyApp = ({ Component, pageProps }) => {
       clientId="ZZub3F876aFJjcKTVH4hMpEVGpZtpNAJ"
       authorizationParams={{
         redirect_uri: typeof window !== 'undefined' && `${window.location.origin}/callback`,
+        scope: '', // auth0 uses the union of scopes provided here and in login request
       }}
     >
       <Head>

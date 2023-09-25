@@ -9,7 +9,7 @@ const SignupButton = () => {
       authorizationParams: {
         screen_hint: "signup",
         prompt: "login",
-        scope: "",
+        scope: '', // auth0 uses the union of scopes provided here and in app init
       },
     });
   };
