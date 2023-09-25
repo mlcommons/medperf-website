@@ -7,6 +7,9 @@ import '../styles/fonts.css';
 import '../styles/globals.css';
 import '../styles/news.css';
 
+const authDomain = process.env.NEXT_PUBLIC_AUTH_DOMAIN;
+const authClient = process.env.NEXT_PUBLIC_AUTH_CLIENT;
+
 const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     TagManager.initialize({ gtmId: 'GTM-NLH7WG6' });
@@ -14,8 +17,8 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
     <Auth0Provider
-      domain="dev-5xl8y6uuc2hig2ly.us.auth0.com"
-      clientId="ZZub3F876aFJjcKTVH4hMpEVGpZtpNAJ"
+      domain={authDomain}
+      clientId={authClient}
       authorizationParams={{
         redirect_uri: typeof window !== 'undefined' && `${window.location.origin}/callback`,
         scope: '', // auth0 uses the union of scopes provided here and in login request

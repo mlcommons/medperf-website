@@ -49,6 +49,8 @@ NEXT_PUBLIC_SANITY_DATASET
 NEXT_PUBLIC_GA_TRACKING_ID
 SANITY_API_TOKEN // You'll need to create this at sanity.io/manage to enable web previews
 SANITY_PREVIEW_SECRET // Same secret as above in Sanity's configuration
+NEXT_PUBLIC_AUTH_DOMAIN
+NEXT_PUBLIC_AUTH_CLIENT
 ```
 
 ### Enabling previews
