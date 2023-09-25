@@ -8,6 +8,8 @@ import Layout from '../components/Layout';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+const authDomain = process.env.NEXT_PUBLIC_AUTH_DOMAIN;
+
 const Index = ({ siteData, preview }) => {
   const router = useRouter();
 
@@ -30,8 +32,7 @@ const Index = ({ siteData, preview }) => {
 
   // Constructing the auth URL for POST
   const state = router.query.state || '';
-  const auth0Domain = 'dev-5xl8y6uuc2hig2ly.us.auth0.com';
-  const targetUrl = `https://${auth0Domain}/continue?state=${state}`;
+  const targetUrl = `https://${authDomain}/continue?state=${state}`;
 
   // logic for the consent button
   const [isChecked, setIsChecked] = useState(false);
