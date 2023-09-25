@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { getClient } from '../sanity/server';
 import { siteSettingsQuery } from '../sanity/queries';
 import { usePreviewSubscription } from '../sanity/helpers';
+import { useState } from 'react';
 
 import Layout from '../components/Layout';
 import Header from '../components/Header';
@@ -27,9 +28,24 @@ const Index = ({ siteData, preview }) => {
     siteSettings,
   } = data;
 
+  // Constructing the auth URL for POST
   const state = router.query.state || '';
   const auth0Domain = 'dev-5xl8y6uuc2hig2ly.us.auth0.com';
   const targetUrl = `https://${auth0Domain}/continue?state=${state}`;
+
+  // logic for the consent button
+  const [isChecked, setIsChecked] = useState(false);
+  const [cssClass, setCssClass] = useState("disabled:opacity-25");
+
+  const handleCheckboxChange = (e) => {
+    setIsChecked(e.target.checked);
+    if (e.target.checked) {
+      setCssClass("cursor-pointer");
+    }
+    else {
+      setCssClass("disabled:opacity-25");
+    }
+  }
   return (
     <Layout
       preview={preview}
@@ -46,13 +62,13 @@ const Index = ({ siteData, preview }) => {
           <form action={targetUrl} method="post">
 
             <label htmlFor="confirm">
-              <input id="confirm" type="checkbox" name="confirm" value="yes" />
-              I agree to the terms
+              <input id="confirm" type="checkbox" name="confirm" value="yes" className="cursor-pointer" onChange={handleCheckboxChange} />
+              <t /> I agree to the terms
             </label>
             <br />
             <br />
 
-            <input type="submit" className="rounded border border-black bg-white p-1" value="Continue" />
+            <input type="submit" className={`rounded border border-black bg-white p-1 ${cssClass}`} value="Continue" disabled={!isChecked} />
 
           </form>
 
