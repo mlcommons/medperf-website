@@ -55,15 +55,16 @@ const Index = ({ siteData, preview }) => {
       <Header siteSettings={siteSettings} showHomeLink />
       <div className="w-full py-16 bg-primary h-full text-center">
         <div className="text-large max-w-screen-lg md:mx-auto justify-center">
-          <h1 className="h2">Welcome! Please agree to the terms of use to continue </h1>
+          <h1 className="h2">Welcome!</h1>
         </div>
         <div className="py-16">
-          <p className="p-2"> This is a test page. Please check the box to proceed.</p>
+          <p className="p-2"> Before using MedPerf, please read and agree to the terms outlined in the End-User License Agreement (EULA). </p>
+          <a href={siteSettings.EULA} target="_blank" rel="noreferrer" className="justify-self-start underline"> Click here to view the EULA </a>
           <form action={targetUrl} method="post">
 
             <label htmlFor="confirm">
               <input id="confirm" type="checkbox" name="confirm" value="yes" className="cursor-pointer" onChange={handleCheckboxChange} />
-              <t /> I agree to the terms
+              <t /> By checking this box, I am agreeing to the End-user license agreement (EULA)
             </label>
             <br />
             <br />
