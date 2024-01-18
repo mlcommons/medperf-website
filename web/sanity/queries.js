@@ -8,6 +8,7 @@ const metadataQuery = `
     teams,
     github,
     privacyPolicy,
+    EULA,
     "seoDescription": seo.description,
     "seoImage": seo.openGraphImage,
   }
