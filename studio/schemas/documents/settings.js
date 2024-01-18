@@ -53,6 +53,11 @@ export default {
       type: 'url',
     },
     {
+      name: 'EULA',
+      title: 'EULA URL',
+      type: 'url',
+    },
+    {
       name: 'seo',
       title: 'SEO',
       type: 'seo',
